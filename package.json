@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve && node ./bin/www",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "devstart": "nodemon ./bin/www"
   },
   "private": true,
   "dependencies": {
@@ -20,8 +21,15 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
+    "http-errors": "^1.7.2",
+    "mongoose": "^5.5.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.11",
     "rxjs": "^6.0.0",
+    "serve-favicon": "^2.5.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
