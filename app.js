@@ -19,12 +19,13 @@ app.use((req, res, next) =>{
   next();
 });
 
-/*
+
+const uri ='mongodb+srv://admin:6M8ldlg4BPNz7iNE@cluster0-afxpp.mongodb.net/test?retryWrites=true';
 mongoose.connect(uri, { useNewUrlParser: true}).then(()=>{
    console.log("connected");
 }).catch(()=>{
   console.log("error occured");
-});*/
+});
 
 
 // catch 404 and forward to error handler
