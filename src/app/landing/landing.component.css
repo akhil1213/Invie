@@ -1,5 +1,6 @@
 .container{
   position: absolute;
+  margin-top:65px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -19,25 +20,62 @@
 
 .item-1{
   position:relative;
-  background-image: url('../../assets/digital-handshake.png');
-  background-repeat: no-repeat;
   min-width: 1700px;
   background-size: 100% 900px;
-  height:800px;
+  height:870px;
   z-index: 2;
+  background-color:#3CCDEA;
+  color:white;
 }
-
+.i1-body{
+  width:1500px;
+  height:500px;
+  display: flex;
+  margin:auto;
+  flex-direction: row;
+}
+.landing-icon{
+  margin-top:150px;
+  width:65%;
+}
+.landing-icon img{
+ /* width:600px;
+  height:400px;*/
+}
+.quote{
+  margin-top:150px;
+  width:35%;
+}
+.quote h2{
+  font-size: 30pt;
+  text-align: center;
+}
+.quote p{
+  font-size: 15pt;
+  text-align: center;
+}
 .item-2{
   position:relative;
   height:890px;
   z-index: 2;
   display:flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .i2-header h2{
-  color:#0c4576;
+  color:#3CCDEA;
   text-align: center;
   font-size: 25pt;
 }
 
+.i2-body{
+  width:800px;
+  text-align: center;
+}
+
+.deal-image img{
+  text-align: center;
+  width:700px;
+  height:500px;
+}
