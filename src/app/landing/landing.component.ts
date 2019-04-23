@@ -12,4 +12,9 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
   }
 
+  scrollTo (y): void{
+    const window = document.getElementById('container');
+    window.scrollTop = y;
+  }
+
 }

@@ -1,7 +1,7 @@
 <div class="navbar">
-    <app-navbar></app-navbar>
+    <app-navbar (scrollYPosition) ="scrollTo($event)"></app-navbar>
   </div>
-<div class="container">
+<div id="container" class="container">
   <!--Logo of our website-->
   <div class="item-1">
     <div class="i1-body">

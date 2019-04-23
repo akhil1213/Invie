@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  @Output() scrollYPosition = new EventEmitter<number>();
+  constructor() {
+
+  }
 
   ngOnInit() {
+  }
+
+  scrollTo(number): void {
+    this.scrollYPosition.emit(number);
   }
 
 }
