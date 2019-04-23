@@ -35,7 +35,7 @@
 }
 .landing-icon{
   margin-top:150px;
-  width:65%;
+  width:55%;
 }
 .landing-icon img{
  /* width:600px;
@@ -43,7 +43,7 @@
 }
 .quote{
   margin-top:150px;
-  width:35%;
+  width:45%;
 }
 .quote h2{
   font-size: 30pt;
@@ -60,9 +60,17 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  border-bottom: 1px solid rgb(226, 226, 226);
 }
-
-.i2-header h2{
+.item-3{
+  position:relative;
+  height:890px;
+  z-index: 2;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.i2-header h2, .i3-header h2{
   margin-top:50px;
   color:#3CCDEA;
   text-align: center;
@@ -80,18 +88,48 @@
   height:500px;
 }
 
+.i3-body{
+  text-align: center;
+  width:850px;
+}
+
+.i3-body td{
+  border: 2px solid rgb(228, 228, 228);
+  padding:10px;
+}
+
+.i3-body td img{
+  width:270px;
+
+}
 .footer{
   width: 100%;
-  height:150px;
+  height:200px;
   display:flex;
   flex-direction: row;
   color:white;
   background-color:#3CCDEA;
 }
-.social-media{
+
+.contact label{
+  margin-left:10px;
+  font-size:15pt;
+  font-weight: bold;
+}
+.copyright label{
+  margin-left:10px;
+  font-size:15pt;
+}
+.contact p{
+  margin-left:10px;
+}
+.social-media, .contact, .copyright{
+  margin-top:12px;
+  margin-left:25px;
   width:25%;
 }
 .social-media label{
+  margin-left:10px;
   font-size:15pt;
   font-weight: bold;
 }
