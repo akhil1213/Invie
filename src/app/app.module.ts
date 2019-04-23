@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { FeedComponent } from './feed/feed.component';
 import { InvestorProfileComponent } from './investor-profile/investor-profile.component';
 import { InvesteeProfileComponent } from './investee-profile/investee-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { InvesteeProfileComponent } from './investee-profile/investee-profile.co
     RegisterComponent,
     FeedComponent,
     InvestorProfileComponent,
-    InvesteeProfileComponent
+    InvesteeProfileComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
