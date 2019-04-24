@@ -29,6 +29,7 @@ exports.createInvestee = (req, res, next) => {
 }
 
 exports.loginInvestee = (req, res, next) => {
+  let fInvestee;
   Investee.findOne({username: req.body.username})
     .then(investee => {
       if(!investee) {
@@ -36,6 +37,7 @@ exports.loginInvestee = (req, res, next) => {
           message: "Authenication failed!"
         });
       }
+      fInvestee = investee;
       return bcrypt.compare(req.body.password, investee.password);
     })
     .then(result => {
@@ -45,7 +47,7 @@ exports.loginInvestee = (req, res, next) => {
         });
       } else {
         const token = jwt.sign(
-          {username: investee.username, investeeId: investee._id},
+          {username: fInvestee.username, investeeId: fInvestee._id},
           "brian_is_a_little_baby",
           {expiresIn: "24h"}
           );

@@ -4,30 +4,27 @@ var BusinessideaSchema = new mongoose.Schema({
 
     name:  {
         type: String,
-        default: String,
-        required: true
+        require: true
     },
 
     objective:  {
         type: String,
-        default: String,
-        required: true
+        default: ''
     },
 
     description:  {
         type: String,
-        default: String,
-        required: true
+        default: ''
     },
 
     weblink:  {
         type: String,
-        default: String,
-        required: true
+        default: ''
     },
 
     tags:  [{
-        type: String
+        type: String,
+        uniqueitems: true
     }],
 
     owners: [{
@@ -36,20 +33,23 @@ var BusinessideaSchema = new mongoose.Schema({
 
     typeOfBusiness: {
         type: String,
-        default: String,
-        required: true
+        default: ''
     },
 
     views: {
         type: String,
-        default: String,
-        required: true
+        default: 0
     },
 
     phoneNumbers: {
         type: String,
-        default: String,
-        required: true
+        default: ''
+    },
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Investee",
+      require: true
     }
 
 });
