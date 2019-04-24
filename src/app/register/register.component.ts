@@ -17,10 +17,10 @@ export class RegisterComponent implements OnInit {
   email:string;
   phone:string;
   constructor(private elementRef: ElementRef ){ }
-  
-  ngAfterViewInit(){
+
+  /*ngAfterViewInit(){
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
- }
+ }*/
   ngOnInit() {
   }
   accountMade(){

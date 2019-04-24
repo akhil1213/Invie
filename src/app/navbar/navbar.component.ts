@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,14 +10,12 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   @Output() scrollYPosition = new EventEmitter<number>();
-  constructor() {
+  onLandingPage: boolean;
+  constructor(private router: Router) {}
 
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  scrollTo(number): void {
+  scrollTo(number: number): void {
     this.scrollYPosition.emit(number);
   }
 
