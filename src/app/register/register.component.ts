@@ -4,9 +4,11 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
   showNew: boolean = false;
   wrongPassword:boolean = false;
+  name:string;
   investeeId:number;
   investorId:number;
   username:string;

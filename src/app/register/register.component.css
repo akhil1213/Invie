@@ -22,7 +22,7 @@ input[type="radio"]{
 #checkbox{
     float:left;
 }
-.radios-checkbox {
+.radios-checkbox, .information {
   text-align: center;
 }
 .radios-checkbox .special {
