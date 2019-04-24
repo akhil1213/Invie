@@ -1,41 +1,51 @@
-<div class = "panel panel-primary">
-  <div class = "panel-heading">
-    LogIn to get Invested In or find an Investee
-  </div>
-  <div *ngIf = "wrongPassword" class="alert alert-warning" role="alert">
-    Your Username or Password is incorrect.
-  </div>
-  <div *ngIf = "!showNew">
+<div>
+  <!-- navbar prob shouldn't be here but how would the user go back to landing page? -->
+    <app-navbar></app-navbar> 
+  <div *ngIf = "!showNew" class = "logindiv">
+      <div *ngIf = "wrongPassword" class="wrongPw">
+          Your Username or Password is incorrect.
+      </div>
     <form>
+      <!-- No idea why password loads up with text inside of it. -->
       <div class = "form-group">
-          <input class="form-control" type = "username" name = "username" placeholder = "username" >
-          <input class="form-control" type = "password" name = "password" placeholder = "password">
+          <label for = "username"><b>Username</b></label>
+          <input type = "username" name = "username" placeholder = "username" >
+          <label for = "password"><b>Password</b></label>
+          <input type = "password" autocomplete="off" name = "password" placeholder = "password">
       </div>
-      <input type = "radio" name = "userType" value = "Investor">
-      <input type = "radio" name = "userType" value = "Company">
-      <div class = "form-check">
-          <input type = "checkbox" name = "remember">
-          <label class="form-check-label" for="exampleCheck1">Remember</label>
-      </div>
-      <button class="btn btn-primary" (click) = "logIn()">Submit</button>
-      <p>Forgot your password?</p><a>Click Here!</a><br>
-      <p>New user?</p><button class="btn btn-secondary" (click) = "showNew = !showNew">Create new account</button>
+      <div class = "radios-checkbox">
+          <input id = "Investor"type = "radio" name = "userType" value = "Investor">
+          <label for = "Investor">Investor</label>
+          <!-- I made the for = to the same id so when you click on the input it changes the label background for that radiobutton clicked -->
+          <input id = "Investee" type = "radio" name = "userType" value = "Investee">
+          <label for = "Investee" id = "investeepushleft">Investee</label>
+          <div id = "checkbox">
+            <input type = "checkbox" name = "remember">Keep me logged in for 30 days
+          </div>
+        </div>
+      <button class = "login-button" (click) = "logIn()">Log In</button>
+      Don't have an account?  <a (click) = "showNew = !showNew">Sign up</a>
     </form>
   </div>
-  <div *ngIf = "showNew">
-      <img>
+  <div class = "logindiv" *ngIf = "showNew">
+      <div class="imgcontainer">
+          <img src="../../assets/loginimage.jpg" alt="Avatar" class="avatar">
+      </div>
       <div class = "form-group">
           <input type = "username" name = "username" [(ngModel)] = "username" placeholder = "username" ><br>
           <input class = "form-control" type = "password" name = "password1" [(ngModel)] = "password1" placeholder = "Password"><br>
           <input class = "form-control" type = "password" name = "password2" [(ngModel)] = "password2" placeholder = "Confirm password"><br>
           <input type="tel" name="phone" [(ngModel)] = "phone"  placeholder = "Phone number" required><br>
+          <input class = "form-control" type = "email" placeholder = "Email Address" name = "email" [(ngModel)] = "email">
       </div>
-      <div class = "form-group">
-          <input class = "form-control" type = "email" name = "email" [(ngModel)] = "email" aria-describedby="emailHelp">
+      <div class = "radios-checkbox">
+        <input id = "Investor" type = "radio" name = "userType" value = "Investor" [(ngModel)] = "userType">
+        <label for = "Investor">Investor</label>
+        <input id = "Investee" type = "radio" name = "userType" value = "Investee" [(ngModel)] = "userType">
+        <label for = "Investee" id = "investeepushleft">Investee</label>
       </div>
-      <input type = "radio" name = "userType" value = "Investor" [(ngModel)] = "userType">
-      <input type = "radio" name = "userType" value = "Investee" [(ngModel)] = "userType">
-      <button class="btn btn-primary" (click) = "accountMade()">Sign Up</button><br>
-      <p>Already have an account?</p><button (click) = "showNew = !showNew"></button>
+      <button class="login-button" (click) = "accountMade()">Join now</button><br>
+      <p>By clicking Join now, you agree to the Invie User Agreement, Privacy Policy, and Cookie Policy.</p>
+      Already have an account?  <a (click) = "showNew = !showNew">Sign in</a>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,8 +16,11 @@ export class RegisterComponent implements OnInit {
   userType:string;
   email:string;
   phone:string;
-  constructor() { }
-
+  constructor(private elementRef: ElementRef ){ }
+  
+  ngAfterViewInit(){
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
+ }
   ngOnInit() {
   }
   accountMade(){
@@ -29,6 +32,7 @@ export class RegisterComponent implements OnInit {
           email:this.email,
           phoneNumber:this.phone
         }
+        //send to mongodb
       }else{
         const Investor = {
           username: this.username,
@@ -36,7 +40,9 @@ export class RegisterComponent implements OnInit {
           email:this.email,
           phoneNumber:this.phone
         }
+        //send to mongodb
       }
+      this.wrongPassword = false;
     }else{
         this.wrongPassword = true;
     }
