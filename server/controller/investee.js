@@ -1,4 +1,5 @@
 const Investee = require("../models/Investee");
+const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcrypt");
 
@@ -24,5 +25,38 @@ exports.createInvestee = (req, res, next) => {
             error: error
           });
         });
+    });
+}
+
+exports.loginInvestee = (req, res, next) => {
+  Investee.findOne({username: req.body.username})
+    .then(investee => {
+      if(!investee) {
+        return res.status(401).json({
+          message: "Authenication failed!"
+        });
+      }
+      return bcrypt.compare(req.body.password, investee.password);
+    })
+    .then(result => {
+      if(!result) {
+        return res.status(401).json({
+          message: "Authenication failed!"
+        });
+      } else {
+        const token = jwt.sign(
+          {username: investee.username, investeeId: investee._id},
+          "brian_is_a_little_baby",
+          {expiresIn: "24h"}
+          );
+          res.status(200).json({
+            token: token
+          });
+      }
+    })
+    .catch(error => {
+      return res.status(401).json({
+        message: "Authenication failed!"
+      });
     });
 }

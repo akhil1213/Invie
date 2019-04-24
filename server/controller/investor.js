@@ -27,3 +27,37 @@ exports.createInvestor = (req, res, next) => {
       });
   });
 }
+
+
+exports.loginInvestor = (req, res, next) => {
+  Investor.findOne({username: req.body.username})
+    .then(investor => {
+      if(!investor) {
+        return res.status(401).json({
+          message: "Authenication failed!"
+        });
+      }
+      return bcrypt.compare(req.body.password, investor.password);
+    })
+    .then(result => {
+      if(!result) {
+        return res.status(401).json({
+          message: "Authenication failed!"
+        });
+      } else {
+        const token = jwt.sign(
+          {username: investor.username, investorId: investor._id},
+          "brian_is_a_little_baby",
+          {expiresIn: "24h"}
+          );
+          res.status(200).json({
+            token: token
+          });
+      }
+    })
+    .catch(error => {
+      return res.status(401).json({
+        message: "Authenication failed!"
+      });
+    });
+}
