@@ -63,3 +63,12 @@ exports.loginInvestor = (req, res, next) => {
       });
     });
 }
+exports.updateInvestor = (req,res,next) => {
+  const var query = req.username
+  const var update = req.newDescription
+  Investor.findOneAndUpdate(query,update).then(documents => {
+    res.status(200).json({
+    message: "Updated Description Successfully",
+    posts: documents
+  });
+});

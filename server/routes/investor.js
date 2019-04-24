@@ -8,4 +8,6 @@ router.post("/signup", InvestorController.createInvestor);
 
 router.post("/login", InvestorConstroller.loginInvestor);
 
+router.patch("/user/updateDs", InvestorConstroller.updateDescription);
+
 module.exports = router;
