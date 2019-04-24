@@ -4,46 +4,66 @@
     width: 400px;
     height:200px;
     padding: 10px;
-    color:white;
+    color:black;
 }
 .form-group input{
-    width: 94%;
-    padding: 15px;
-    margin: 10px 0 10px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  outline: none;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
-/*gets rid of circle next to radiobutton*/
+/*gets rid of circle next to radiobutton
 input[type="radio"]{
     display:none;
-}
+}*/
 #checkbox{
     float:left;
 }
-.radios-checkbox label {
+.radios-checkbox, .information {
+  text-align: center;
+}
+.radios-checkbox .special {
+    margin-left:5px;
     display:inline-block;
     background-color:#EF6C2A;
     padding: 10px 20px;
     font-family:Arial;
     font-size:16px;
     border: 2px solid #444;
-    border-radius: 4px;    
+    border-radius: 4px;
 }
 #investeepushleft{
     margin-left: 5px;
 }
-.radios-checkbox input[type="radio"]:checked + label { 
+/*.radios-checkbox input[type="radio"]:checked + label {
     background-color: rgb(116, 136, 216);
 }
 .radios-checkbox label:hover {
     background-color: rgb(173, 80, 46);
+}*/
+.buttons{
+  text-align: center;
+  margin-top:10px;
 }
-.login-button{
-    width: 99%;
-    padding: 15px;
-    background-color: #EF6C2A;
-    font-size: 90%;
+.button {
+  background-color: #EF6C2A;
+  border: none;
+  color: white;
+  padding: 12px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: .5s;
+  cursor: pointer;
+  margin:auto;
+}
+.button:hover {
+  background-color: rgb(240, 129, 73);
+  color: white;
 }
 .radio-checkbox{
     margin:15px;
@@ -52,13 +72,78 @@ input[type="radio"]{
     text-align: center;
     margin: 24px 0 12px 0;
 }
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
+.avatar {
+    width: 30%;
 }
 /* its because the href's didnt have any links so it looked like regular text so i got the markup from an a tag with href*/
 a{
     color: -webkit-link;
     cursor: pointer;
     text-decoration: underline;
+}
+
+
+.footer{
+  width: 100%;
+  height:200px;
+  display:flex;
+  position: absolute;
+  bottom: 0;
+  flex-direction: row;
+  color:white;
+  background-color:#3CCDEA;
+}
+
+.contact label{
+  margin-left:10px;
+  font-size:15pt;
+  font-weight: bold;
+}
+.copyright label{
+  margin-left:10px;
+  font-size:15pt;
+}
+.contact p{
+  margin-left:10px;
+}
+.social-media, .contact, .copyright{
+  margin-top:12px;
+  margin-left:25px;
+  width:25%;
+}
+.social-media label{
+  margin-left:10px;
+  font-size:15pt;
+  font-weight: bold;
+}
+.social-media a{
+  margin-left:5px;
+}
+/* Style all font awesome icons */
+.fa {
+  padding: 10px;
+  font-size: 25px;
+  width: 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
 }

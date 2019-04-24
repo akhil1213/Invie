@@ -35,6 +35,7 @@
 }
 .landing-icon{
   margin-top:150px;
+  margin-left:10px;
   width:55%;
 }
 .landing-icon img{
@@ -90,12 +91,18 @@
 
 .i3-body{
   text-align: center;
-  width:850px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:1550px;
 }
 
 .i3-body td{
   border: 2px solid rgb(228, 228, 228);
-  padding:10px;
+}
+
+.i3-body img{
+  padding:35px;
 }
 
 .i3-body td img{
