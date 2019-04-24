@@ -1,46 +1,42 @@
 const mongoose = require('mongoose');
+const validator = require('mongoose-unique-validator');
 
 var investorSchema = new mongoose.Schema({
     email: {
         type: String,
-        default: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type:String,
-        default:String,
         required:true
       },
     username: {
         type:String,
-        default: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     phoneNumber: {
         type:String,
-        default: String,
         required: true
     },
 
     description: {
         type:String,
-        default: String,
-        required: true
+        default: ''
     },
 
     weblink: {
         type:String,
-        default: String,
-        required: true
+        default: ''
     },
 
     currentCompany: {
         type:String,
-        default: String,
-        required: true
+        default: ''
     },
-// arrays of strings are written this way. 
+// arrays of strings are written this way.
 // I used uniqueItems to filter duplicates.
     interest:  [{
         type: String,
@@ -49,4 +45,6 @@ var investorSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('investor', investorSchema);
+investorSchema.plugin(validator);
+
+module.exports = mongoose.model('Investor', investorSchema);
