@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { AuthService } from "./auth.service"
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,35 +19,18 @@ export class RegisterComponent implements OnInit {
   userType:string;
   email:string;
   phone:string;
-  constructor(private elementRef: ElementRef ){ }
+
+  constructor(private authService : AuthService){ }
 
   /*ngAfterViewInit(){
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
  }*/
   ngOnInit() {
   }
+
   accountMade(){
-    if(this.password1.valueOf() == this.password2.valueOf()){
-      if(this.userType.valueOf() == "Investee"){
-        const Investee = {//How do I save this to the mongoDB collection?
-          username: this.username,
-          password: this.password1,
-          email:this.email,
-          phoneNumber:this.phone
-        }
-        //send to mongodb
-      }else{
-        const Investor = {
-          username: this.username,
-          password: this.password1,
-          email:this.email,
-          phoneNumber:this.phone
-        }
-        //send to mongodb
-      }
-      this.wrongPassword = false;
-    }else{
-        this.wrongPassword = true;
+    if(this.email != "" && this.password1.valueOf() == this.password2.valueOf() && this.password1 != ""){
+      this.authService.createUser(this.email,this.password1,this.userType);
     }
   }
 

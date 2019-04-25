@@ -10,7 +10,8 @@ import { InvestorProfileComponent } from './investor-profile/investor-profile.co
 import { InvesteeProfileComponent } from './investee-profile/investee-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {HttpClientModule} from '@angular/common/http';
+// import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,9 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+    // ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
