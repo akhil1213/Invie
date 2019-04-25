@@ -63,12 +63,21 @@ exports.loginInvestor = (req, res, next) => {
       });
     });
 }
+
+
 exports.updateInvestor = (req,res,next) => {
-  const var query = req.username
-  const var update = req.newDescription
-  Investor.findOneAndUpdate(query,update).then(documents => {
-    res.status(200).json({
-    message: "Updated Description Successfully",
-    posts: documents
-  });
-});
+  Investor.findOneAndUpdate(
+    {username: req.data.username},
+    {description: req.body.newDescription})
+    .then(documents => {
+      res.status(200).json({
+        message: "Updated Description Successfully",
+        posts: documents
+      });
+    })
+    .catch(error => {
+      res.status(401).json({
+        message: error
+      });
+    });
+  }

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const validator = require('mongoose-unique-validator');
 
-var BusinessideaSchema = new mongoose.Schema({
+var businessideaSchema = new mongoose.Schema({
 
     name:  {
         type: String,
@@ -49,9 +50,12 @@ var BusinessideaSchema = new mongoose.Schema({
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Investee",
-      require: true
+      require: true,
+      unique: true
     }
 
 });
+
+businessideaSchema.plugin(validator);
 
 module.exports = mongoose.model('BusinessIdea', BusinessideaSchema);
