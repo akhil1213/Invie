@@ -1,17 +1,22 @@
 .maindiv{
     width: 100%;
-    height: 71%;
+    height: 100%;
     /* top: 0px;
     left: 0px;
     z-index: 10; */
-    overflow-y:scroll;
 }
 /* width works good but height is buggy so i added scrolling feature for now whenever changing browser size */
 .logindiv{
     margin: 0 auto;
-    width: 35%;
+    width: 25%;
     padding: 10px;
     color:black;
+}
+.signupdiv{
+  margin: 0 auto;
+  width: 25%;
+  padding: 10px;
+  color:black;
 }
 .form-group input{
   width: 100%;
