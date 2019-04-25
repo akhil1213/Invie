@@ -14,10 +14,10 @@
     </div>
       <div class = "form-group">
           <label for = "username">Username</label>
-          <input type = "email" name = "email" >
-          <label for = "password">Password</label>
-          <input type = "password" autocomplete="off" name = "password">
-      </div>
+          <input type = "email" name = "username" ngModel email="true" [(ngModel)] = "username" required email>
+          <label for = "password" >Password</label>
+          <input type = "password" autocomplete="off" name = "password" [(ngModel)] = "password" required minlength = "5">
+        </div>
       <div class = "radios-checkbox">
           <label>Type Of User? </label>
           <input id = "Investor"type = "radio" name = "userType" value = "Investor">
@@ -38,7 +38,7 @@
       </div>
       <div class = "form-group">
           <label>Enter your name: </label>
-          <input class = "form-control" type = "email" name = "email" [(ngModel)] = "email">
+          <input class = "form-control" type = "text" name = "name" [(ngModel)] = "name">
           <label>Enter your email: </label>
           <input class = "form-control" type = "email" name = "email" [(ngModel)] = "email">
           <label>Enter your password: </label>
@@ -54,7 +54,7 @@
         <label for = "Investee" id = "investeepushleft">Investee</label>
       </div>
       <div class="buttons">
-        <button class="button" (click) = "accountMade()">Join now</button><br>
+        <a routerLink = "/signup" class="button" (click) = "accountMade()">Join now</a>
       </div>
       <div class="information">
           <p>By clicking Join now, you agree to the Invie User Agreement, Privacy Policy, and Cookie Policy.</p>
