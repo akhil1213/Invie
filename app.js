@@ -5,12 +5,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const router = express.Router();
-
-//Routes for different users
-const investorRoute = require("./server/routes/investor");
-const investeeRoute = require("./server/routes/investee");
-
 var app = express();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -31,6 +27,12 @@ mongoose.connect(uri, { useNewUrlParser: true}).then(()=>{
   console.log("error occured");
 });
 
+//Routes for different users
+const investorRoute = require("./server/routes/investor");
+const investeeRoute = require("./server/routes/investee");
+app.use("/user/investor", investorRoute);
+app.use("/user/investee", investeeRoute);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,8 +50,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send(err.status);
 });
-
-app.use("/user/investor", investorRoute);
-app.use("/user/investee", investeeRoute);
 
 module.exports = app;

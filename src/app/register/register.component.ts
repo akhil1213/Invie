@@ -47,10 +47,17 @@ export class RegisterComponent implements OnInit {
   }
 
   signup(): void{
-    console.log(this.signUpInformation);
-    if (this.signUpInformation.userType === '1' ){
-      this.investorService.signup(this.signUpInformation);
-    } else if (this.signUpInformation.userType === '2'){
+    if (parseInt(this.signUpInformation.userType) === 1){
+      this.investorService.signup(this.signUpInformation).subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+
+        }
+
+        );
+    } else if (parseInt(this.signUpInformation.userType) === 2){
       this.investeeService.signup(this.signUpInformation);
     } else {
       console.log('Did not select user type')
