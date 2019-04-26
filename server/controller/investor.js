@@ -1,5 +1,5 @@
 const Investor = require("../models/Investor");
-
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
@@ -7,7 +7,6 @@ const bcrypt = require("bcrypt");
 exports.createInvestor = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
-    console.log("inside hash");
     const investor = new Investor({
       email: req.body.email,
       password: hash,
@@ -15,14 +14,12 @@ exports.createInvestor = (req, res, next) => {
     });
     investor.save()
       .then(result => {
-        console.log("investor saved");
         res.status(201).json({
           message: 'Investor user created!',
           result: result
         });
       })
       .catch(error => {
-        console.log(error);
         res.status(500).json({
           error: error
         });
@@ -40,7 +37,7 @@ exports.loginInvestor = (req, res, next) => {
           message: "Authenication failed!"
         });
       }
-      finvestor = investor;
+      fInvestor = investor;
       return bcrypt.compare(req.body.password, investor.password);
     })
     .then(result => {
@@ -60,6 +57,7 @@ exports.loginInvestor = (req, res, next) => {
       }
     })
     .catch(error => {
+      console.log(error);
       return res.status(401).json({
         message: "Authenication failed!"
       });

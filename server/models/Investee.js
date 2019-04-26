@@ -17,7 +17,7 @@ var investeeSchema = new mongoose.Schema({
     },
 
     phoneNumber: {
-        type:String,
+        type:String
     },
 
     description: {
