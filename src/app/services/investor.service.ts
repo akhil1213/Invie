@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvestorService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  signup(user): Observable<any> {
+    return this.http.post<any>('//localhost:3000/user/investor/signup', user);
+  }
 }

@@ -11,6 +11,7 @@ import { InvesteeProfileComponent } from './investee-profile/investee-profile.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProfileNavbarComponent } from './profile-navbar/profile-navbar.component';
 // import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http';
     InvestorProfileComponent,
     InvesteeProfileComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileNavbarComponent
   ],
   imports: [
     BrowserModule,

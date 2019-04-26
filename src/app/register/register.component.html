@@ -13,21 +13,21 @@
         <img src="../../assets/logo2.JPG" alt="Avatar" class="avatar">
     </div>
       <div class = "form-group">
-          <label for = "username">Username</label>
-          <input type = "email" name = "username" ngModel email="true" [(ngModel)] = "username" required email>
+          <label for = "username">Email</label>
+          <input type = "email" name = "username" ngModel email="true" [(ngModel)] = "loginInformation.email" required email>
           <label for = "password" >Password</label>
-          <input type = "password" autocomplete="off" name = "password" [(ngModel)] = "password" required minlength = "5">
+          <input type = "password" autocomplete="off" name = "password" [(ngModel)] = "loginInformation.password" required minlength = "5">
         </div>
       <div class = "radios-checkbox">
           <label>Type Of User? </label>
-          <input id = "Investor"type = "radio" name = "userType" value = "Investor">
+          <input id = "Investor" [value]="1" [(ngModel)]="loginInformation.userType" type = "radio" name = "userType" value = "Investor">
           <label  for = "Investor">Investor</label>
           <!-- I made the for = to the same id so when you click on the input it changes the label background for that radiobutton clicked -->
-          <input id = "Investee" type = "radio" name = "userType" value = "Investee">
+          <input id = "Investee" [value]="2"  [(ngModel)]="loginInformation.userType" type = "radio" name = "userType" value = "Investee">
           <label  for = "Investee" id = "investeepushleft">Investee</label>
         </div>
         <div class="buttons">
-          <button class ="button" (click) = "logIn()">Log In</button>
+          <button class ="button" (click) = "login()">Log In</button>
         </div>
       <p style="text-align: center"> Don't have an account?  <a (click) = "showNew = !showNew">Sign up</a></p>
     </form>
@@ -38,23 +38,23 @@
       </div>
       <div class = "form-group">
           <label>Enter your name: </label>
-          <input class = "form-control" type = "text" name = "name" [(ngModel)] = "name">
+          <input class = "form-control" type = "text" name = "name" [(ngModel)] = "signUpInformation.name">
           <label>Enter your email: </label>
-          <input class = "form-control" type = "email" name = "email" [(ngModel)] = "email">
+          <input class = "form-control" type = "email" name = "email" [(ngModel)] = "signUpInformation.email">
           <label>Enter your password: </label>
-          <input class = "form-control" type = "password" name = "password1" [(ngModel)] = "password1"><br>
+          <input class = "form-control" type = "password" name = "password1" [(ngModel)] = "signUpInformation.password"><br>
           <label>Retype Password: </label>
-          <input class = "form-control" type = "password" name = "password2" [(ngModel)] = "password2"><br>
+          <input class = "form-control" type = "password" name = "password2" [(ngModel)] = "signUpInformation.passwordRetype"><br>
       </div>
       <div class = "radios-checkbox">
           <label>What type of user are you? </label>
-        <input id = "Investor" type = "radio" name = "userType" value = "Investor" [(ngModel)] = "userType">
+        <input id = "Investor" type = "radio" name = "userType" [value] = "1" [(ngModel)] = "signUpInformation.userType">
         <label for = "Investor">Investor</label>
-        <input id = "Investee" type = "radio" name = "userType" value = "Investee" [(ngModel)] = "userType">
+        <input id = "Investee" type = "radio" name = "userType" [value] = "2" [(ngModel)] = "signUpInformation.userType">
         <label for = "Investee" id = "investeepushleft">Investee</label>
       </div>
       <div class="buttons">
-        <a routerLink = "/signup" class="button" (click) = "accountMade()">Join now</a>
+        <a class="button" (click) = "signup()">Join now</a>
       </div>
       <div class="information">
           <p>By clicking Join now, you agree to the Invie User Agreement, Privacy Policy, and Cookie Policy.</p>
