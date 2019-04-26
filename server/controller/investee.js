@@ -10,8 +10,7 @@ exports.createInvestee = (req, res, next) => {
       const investee = new Investee({
         email: req.body.email,
         password: hash,
-        username: req.body.username,
-        phoneNumber: req.body.phoneNumber
+        name: req.body.name
       });
       investee.save()
         .then(result => {
@@ -30,7 +29,7 @@ exports.createInvestee = (req, res, next) => {
 
 exports.loginInvestee = (req, res, next) => {
   let fInvestee;
-  Investee.findOne({username: req.body.username})
+  Investee.findOne({email: req.body.email})
     .then(investee => {
       if(!investee) {
         return res.status(401).json({
@@ -47,7 +46,7 @@ exports.loginInvestee = (req, res, next) => {
         });
       } else {
         const token = jwt.sign(
-          {username: fInvestee.username, investeeId: fInvestee._id},
+          {email: fInvestee.email, investeeId: fInvestee._id},
           "brian_is_a_little_baby",
           {expiresIn: "24h"}
           );
@@ -66,7 +65,7 @@ exports.loginInvestee = (req, res, next) => {
 
 exports.updateInvesteeDesc = (req,res,next) => {
   Investee.findOneAndUpdate(
-    {username: req.data.username},
+    {email: req.data.email},
     {description: req.body.newDescription})
     .then(documents => {
       res.status(200).json({

@@ -8,17 +8,6 @@ const router = express.Router();
 var app = express();
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
-
-// Allows servers to communicate with each other
-app.use((req, res, next) =>{
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested, Content-Type, Accept, Authorization");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
-  next();
-});
-
 
 const uri ='mongodb+srv://admin:6M8ldlg4BPNz7iNE@cluster0-afxpp.mongodb.net/test?retryWrites=true';
 mongoose.connect(uri, { useNewUrlParser: true}).then(()=>{
@@ -26,6 +15,18 @@ mongoose.connect(uri, { useNewUrlParser: true}).then(()=>{
 }).catch(()=>{
   console.log("error occured");
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
+// Allows servers to communicate with each other
+app.use((req, res, next) =>{
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+  next();
+});
+
 
 //Routes for different users
 const investorRoute = require("./server/routes/investor");
@@ -48,7 +49,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   // res.sendStatus(err.status)
   res.status(err.status || 500);
-  res.send(err.status);
+  res.sendStatus(err.status);
 });
 
 module.exports = app;

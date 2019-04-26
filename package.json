@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "devstart": "nodemon ./bin/www"
+    "devstart": "nodemon ./bin/server.js"
   },
   "private": true,
   "dependencies": {

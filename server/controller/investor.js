@@ -7,20 +7,22 @@ const bcrypt = require("bcrypt");
 exports.createInvestor = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
+    console.log("inside hash");
     const investor = new Investor({
       email: req.body.email,
       password: hash,
-      username: req.body.username,
-      phoneNumber: req.body.phoneNumber
+      name: req.body.name
     });
     investor.save()
       .then(result => {
+        console.log("investor saved");
         res.status(201).json({
           message: 'Investor user created!',
           result: result
         });
       })
       .catch(error => {
+        console.log(error);
         res.status(500).json({
           error: error
         });
@@ -31,7 +33,7 @@ exports.createInvestor = (req, res, next) => {
 
 exports.loginInvestor = (req, res, next) => {
   let fInvestor;
-  Investor.findOne({username: req.body.username})
+  Investor.findOne({email: req.body.email})
     .then(investor => {
       if(!investor) {
         return res.status(401).json({
@@ -48,7 +50,7 @@ exports.loginInvestor = (req, res, next) => {
         });
       } else {
         const token = jwt.sign(
-          {username: fInvestor.username, investorId: fInvestor._id},
+          {email: fInvestor.email, investorId: fInvestor._id},
           "brian_is_a_little_baby",
           {expiresIn: "24h"}
           );
@@ -67,7 +69,7 @@ exports.loginInvestor = (req, res, next) => {
 
 exports.updateInvestorDesc = (req,res,next) => {
   Investor.findOneAndUpdate(
-    {username: req.data.username},
+    {email: req.data.email},
     {description: req.body.newDescription})
     .then(documents => {
       res.status(200).json({
