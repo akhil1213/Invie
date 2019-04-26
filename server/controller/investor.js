@@ -65,7 +65,7 @@ exports.loginInvestor = (req, res, next) => {
 }
 
 
-exports.updateInvestor = (req,res,next) => {
+exports.updateInvestorDesc = (req,res,next) => {
   Investor.findOneAndUpdate(
     {username: req.data.username},
     {description: req.body.newDescription})

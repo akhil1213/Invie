@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post("/signup", InvestorController.createInvestor);
 
-router.post("/login", InvestorConstroller.loginInvestor);
+router.post("/login", InvestorController.loginInvestor);
 
-router.patch("/updateDesc", InvestorConstroller.updateDescription);
+router.patch("/updateDesc", InvestorController.updateInvestorDesc);
 
 module.exports = router;
