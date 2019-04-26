@@ -12,4 +12,8 @@ export class InvestorService {
   signup(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investor/signup', user);
   }
+
+  login(user): Observable<any> {
+    return this.http.post<any>('//localhost:3000/user/investor/login', user);
+  }
 }

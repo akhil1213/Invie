@@ -9,25 +9,14 @@ import { InvesteeService } from '../services/investee.service';
 })
 
 export class RegisterComponent implements OnInit {
-  showNew: boolean = false;
-  wrongPassword:boolean = false;
-  name:string;
-  investeeId:number;
-  investorId:number;
-  username:string;
-  password:string;
-  password1:string;
-  password2:string;
-  userType:string;
-  email:string;
-  phone:string;
-
+  // Necessary information for login
   loginInformation = {
     email: '',
     password: '',
     userType: ''
   };
 
+  // Necessary information for signup
   signUpInformation = {
     name: '',
     email: '',
@@ -49,9 +38,9 @@ export class RegisterComponent implements OnInit {
   login(): void {
     console.log(this.loginInformation);
     if (this.loginInformation.userType === '1' ){
-      this.investorService.signup(this.loginInformation);
+      this.investorService.login(this.loginInformation);
     } else if (this.loginInformation.userType === '2'){
-      console.log('It is an investee');
+      this.investeeService.login(this.loginInformation);
     } else {
       console.log('Did not select user type')
     }
@@ -60,9 +49,9 @@ export class RegisterComponent implements OnInit {
   signup(): void{
     console.log(this.signUpInformation);
     if (this.signUpInformation.userType === '1' ){
-      console.log('It is an investor!');
+      this.investorService.signup(this.signUpInformation);
     } else if (this.signUpInformation.userType === '2'){
-      console.log('It is an investee');
+      this.investeeService.signup(this.signUpInformation);
     } else {
       console.log('Did not select user type')
     }
