@@ -27,7 +27,9 @@
           <label  for = "Investee" id = "investeepushleft">Investee</label>
         </div>
         <div class="buttons">
-          <button class ="button" (click) = "login()">Log In</button>
+          <button *ngIf = "loginInformation.userType == ''" class ="button" (click) = "login()">Log In</button>
+          <button *ngIf = "loginInformation.userType == 1" routerLink = "/investor-profile"class ="button" (click) = "login()">Log In</button>
+          <button *ngIf = "loginInformation.userType == 2" routerLink = "/investee-profile"class ="button" (click) = "login()">Log In</button>
         </div>
       <p style="text-align: center"> Don't have an account?  <a (click) = "showNew = !showNew">Sign up</a></p>
     </form>
@@ -54,7 +56,9 @@
         <label for = "Investee" id = "investeepushleft">Investee</label>
       </div>
       <div class="buttons">
-        <a class="button" (click) = "signup()">Join now</a>
+        <button *ngIf = "signUpInformation.userType == ''" class ="button" (click) = "signup()">Join now</button>
+        <button *ngIf = "signUpInformation.userType== 1" routerLink = "/investor-profile"class ="button" (click) = "signup()">Join now</button>
+        <button *ngIf = "signUpInformation.userType == 2" routerLink = "/investee-profile"class ="button" (click) = "signup()">Join now</button>
       </div>
       <div class="information">
           <p>By clicking Join now, you agree to the Invie User Agreement, Privacy Policy, and Cookie Policy.</p>
