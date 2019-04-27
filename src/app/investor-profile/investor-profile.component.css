@@ -6,6 +6,7 @@
   left: 0;
   right: -17px;
   overflow-y: scroll;
+  display:flex;
 }
 .navbar{
   width:100%;
@@ -15,4 +16,29 @@
   left:0px;
   z-index:11;
 
+}
+.image{
+    margin-top:10px;
+    margin-left:10px;
+}
+.name{
+  color: #3CCDEA;
+  margin-left: 45px;
+  margin-top: 60px;
+  font-size:20px;
+}
+.imageandname{
+  display:flex;
+}
+.investordescription{
+  margin-left:25px;
+  border:2px solid #3CCDEA;
+  color: #EF6C2A;
+}
+#tagsPushedRight{
+  width:50%;
+}
+.tags{
+  width:50%;
+  margin-left:20px;
 }
