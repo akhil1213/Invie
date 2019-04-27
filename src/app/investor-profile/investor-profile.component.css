@@ -6,6 +6,7 @@
   left: 0;
   right: -17px;
   overflow-y: scroll;
+  display:flex;
 }
 .navbar{
   width:100%;
@@ -15,4 +16,43 @@
   left:0px;
   z-index:11;
 
+}
+.image{
+    margin-top:10px;
+    margin-left:10px;
+}
+.name{
+  color: #3CCDEA;
+  margin-left: 45px;
+  margin-top: 60px;
+  font-size:20px;
+}
+.imageandname{
+  display:flex;
+}
+.investordescription{
+  margin-left:25px;
+  border:1px solid #8d8791;
+  color: #EF6C2A;
+  padding:10px;
+  padding-top:2px;
+}
+#tagsPushedRight{
+  width:50%;
+}
+.tags{
+  width:50%;
+  margin-left:20px;
+}
+.tags h1{
+  text-align: center;
+}
+.tags img{
+  width:30px;
+  height:40px;
+  padding-right:15px;
+}
+#small{
+  font-size: 10px;
+  color:#D3D3D3
 }
