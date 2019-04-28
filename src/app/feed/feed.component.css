@@ -1,11 +1,14 @@
 .container{
   position: absolute;
-  margin-top:65px;
+  margin-top:75px;
   top: 0;
   bottom: 0;
   left: 0;
   right: -17px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .navbar{
   width:100%;
@@ -15,4 +18,54 @@
   left:0px;
   z-index:11;
 
+}
+
+
+/**
+View Container Styles
+**/
+.recently-viewed-card {
+  border: 1px solid rgb(218, 218, 218);
+  width: 325px;
+}
+.view-card-container,.view-body, .investor-list, .investee-list {
+  display:flex;
+  flex-direction: column;
+}
+.view-header{
+  text-align: center;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+.user-view{
+  height:70px;
+  display:flex;
+  padding:10px;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+.user-view img{
+ width:60px;
+ height:60px;
+}
+.user-view h3{
+ margin-left:15px;
+ font-weight: none;
+}
+
+/**
+Feed Card Style
+**/
+.feed-card {
+  border: 1px solid rgb(218, 218, 218);
+  transition: 0.3s;
+  width: 925px;
+}
+
+.last-card{
+  border: 1px solid rgb(218, 218, 218);
+  transition: 0.3s;
+  width: 325px;
+}
+.card-container {
+  padding: 2px 16px;
 }
