@@ -39,7 +39,7 @@ var investorSchema = new mongoose.Schema({
     interest:  [{
         type: String,
         uniqueitems: true
-    }],
+    }]
 
 });
 
