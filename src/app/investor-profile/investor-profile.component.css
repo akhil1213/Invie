@@ -32,7 +32,7 @@
 }
 .investordescription{
   margin-left:25px;
-  border:1px solid #8d8791;
+  border:1px solid rgb(218, 218, 218);
   color: #EF6C2A;
   padding:10px;
   padding-top:2px;
@@ -41,18 +41,39 @@
   width:50%;
 }
 .tags{
-  width:50%;
+  width:30%;
+  margin-top: 10px;
   margin-left:20px;
+  border: 1px solid rgb(218, 218, 218);
 }
 .tags h1{
   text-align: center;
 }
 .tags img{
-  width:30px;
-  height:40px;
+  width:150px;
+  height:80px;
   padding-right:15px;
 }
 #small{
   font-size: 10px;
   color:#D3D3D3
+}
+.header-title{
+  text-align:center;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+.view-item{
+  display:flex;
+  flex:row;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+.view-item img{
+  padding: 10px;
+}
+#followersunder{
+  margin-left: 50px;
+  margin: 0 auto;
+  padding-top: 25px;
+  font-size:30px;
 }
