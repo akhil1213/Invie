@@ -1,13 +1,16 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { AuthService } from "./auth.service"
 import { InvestorService } from '../services/investor.service';
 import { InvesteeService } from '../services/investee.service';
+import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 
+@Injectable({
+  providedIn: 'root'
+})
 export class RegisterComponent implements OnInit {
   // Necessary information for login
   loginInformation = {
@@ -25,9 +28,12 @@ export class RegisterComponent implements OnInit {
     userType: ''
   }
 
-  constructor(private authService: AuthService,
+  private token = "blank";
+  private expTime: Date;
+
+  constructor(
     private investorService: InvestorService,
-    private investeeService: InvesteeService){ }
+    private investeeService: InvesteeService) {}
 
   /*ngAfterViewInit(){
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
@@ -35,17 +41,26 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  getToken() {
+    return this.token;
+  }
+
   login(): void {
-    console.log(this.loginInformation);
     if (parseInt(this.loginInformation.userType) === 1 ){
       this.investorService.login(this.loginInformation).subscribe(
-        res => {console.log(res)},
+        res => {
+          console.log(res);
+          this.token = res.token;
+          const currentTime = new Date();
+          this.expTime = new Date(currentTime.getTime() + res.expiresIn);
+          this.saveAuthDataLocal(this.token, this.expTime);
+        },
         err => {console.log(err)}
       );
     } else if (parseInt(this.loginInformation.userType) === 2){
       this.investeeService.login(this.loginInformation);
     } else {
-      console.log('Did not select user type')
+      console.log('Did not select user type');
     }
   }
 
@@ -56,7 +71,7 @@ export class RegisterComponent implements OnInit {
           console.log(res);
         },
         (err) => {
-
+          console.log(err);
         }
 
         );
@@ -65,6 +80,16 @@ export class RegisterComponent implements OnInit {
     } else {
       console.log('Did not select user type')
     }
+  }
+
+  private saveAuthDataLocal(token, expirationDate: Date) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('expirationDate', expirationDate.toISOString());
+  }
+
+  private removeLocalAuthData() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
   }
  /* accountMade(){
     if(this.email != "" && this.password1.valueOf() == this.password2.valueOf() && this.password1 != ""){

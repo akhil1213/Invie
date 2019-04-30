@@ -10,8 +10,9 @@ import { InvestorProfileComponent } from './investor-profile/investor-profile.co
 import { InvesteeProfileComponent } from './investee-profile/investee-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ProfileNavbarComponent } from './profile-navbar/profile-navbar.component';
+import { AuthInterceptor } from './Authentication/auth-interceptor';
 // import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ProfileNavbarComponent } from './profile-navbar/profile-navbar.componen
     HttpClientModule
     // ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

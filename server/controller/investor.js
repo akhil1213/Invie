@@ -52,7 +52,8 @@ exports.loginInvestor = (req, res, next) => {
           {expiresIn: "24h"}
           );
           res.status(200).json({
-            token: token
+            token: token,
+            expiresIn: 24*3600000
           });
       }
     })
