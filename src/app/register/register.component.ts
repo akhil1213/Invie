@@ -28,8 +28,8 @@ export class RegisterComponent implements OnInit {
     userType: ''
   }
 
-  private token = "blank";
-  private expTime: Date;
+  private token = 'blank';
+  private expTime: Date = new Date();
 
   constructor(
     private investorService: InvestorService,
