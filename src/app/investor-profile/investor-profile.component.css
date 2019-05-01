@@ -19,32 +19,39 @@
 }
 .image{
     margin-top:10px;
-    margin-left:10px;
 }
-.name{
+
+.contact{
+  margin-left: 30px;
+  margin-top: 20px;
+  width:250px;
+  border:1px solid rgb(218, 218, 218);
+  text-align: center;
   color: #3CCDEA;
-  margin-left: 45px;
-  margin-top: 60px;
-  font-size:20px;
+  font-size:10px;
+  height:400px;
 }
-.imageandname{
-  display:flex;
+.info{
+  display: inline-block;
+  width:90px;
 }
 .investordescription{
-  margin-left:25px;
   border:1px solid rgb(218, 218, 218);
   color: #EF6C2A;
   padding:10px;
   padding-top:2px;
+  width:500px;
+  height:200px;
 }
-#tagsPushedRight{
-  width:50%;
+.companyandinterests{
+  display:flex;
+  flex:row;
 }
+
 .tags{
-  width:30%;
+  width:40%;
   margin-top: 10px;
   margin-left:20px;
-  border: 1px solid rgb(218, 218, 218);
 }
 .tags h1{
   text-align: center;
@@ -54,6 +61,11 @@
   height:80px;
   padding-right:15px;
 }
+.interests{
+   border:1px solid rgb(218, 218, 218);
+   margin-top: 10px;
+}
+
 #small{
   font-size: 10px;
   color:#D3D3D3
