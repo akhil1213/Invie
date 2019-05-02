@@ -36,7 +36,14 @@
           <button (click)="showModal()" class="button">Create Business Idea</button>
         </div>
         <div class="idea" *ngIf="hasIdea">
-          idea displayed here
+          <div class="idea-card">
+            <div class="idea-header">
+
+            </div>
+            <div class="idea-body">
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,9 +68,14 @@
             <label>Objective</label>
             <input id="inputClass" type="text" name="pname">
         </div>
-      </div>
+        <!--Description-->
+        <div class="input-group">
+          <label>Description</label>
+          <textarea></textarea>
+        </div>
         <!--Submit-->
         <button>Create Idea</button>
+      </div>
     </form>
   </div>
 </div>

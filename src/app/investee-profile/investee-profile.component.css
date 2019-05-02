@@ -106,7 +106,7 @@ a:hover{
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   outline: none;
@@ -117,25 +117,45 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 .modal-container button {
-  background-color: black;
+  background-color: #EF6C2A;
+  border: none;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 12px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: .5s;
   cursor: pointer;
-  width: 70%;
-  border: 0.5px solid black;
+  margin:auto;
 }
 
 .modal-container button:hover {
   transition: 0.2s;
-  border: 0.5px solid #FF4500;
-  background-color:#FF4500;
-  opacity: 0.8;
+  background-color: rgb(240, 129, 73);
+  color: white;
 }
 
-
+textarea{
+  width:50%;
+  height:80px;
+  margin: 8px 0;
+  outline: none;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  resize: none;
+}
 .modal-container {
   padding: 16px;
+  width:100%;
+  display: inline-block;
+}
+.input-group{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  width:80%
 }
 
 /* The Modal (background) */
@@ -144,7 +164,7 @@ input[type=text], input[type=password] {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 60%; /* Full width */
+  width: 40%; /* Full width */
   height: 75%; /* Full height */
   min-width: 600px;
   /*overflow: auto; /* Enable scroll if needed */
