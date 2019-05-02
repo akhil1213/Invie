@@ -24,30 +24,49 @@
 .contact{
   margin-left: 30px;
   margin-top: 20px;
-  width:250px;
+  width:280px;
   border:1px solid rgb(218, 218, 218);
   text-align: center;
   color: #3CCDEA;
   font-size:10px;
   height:400px;
 }
+.phonewithpic{
+  display:flex;
+  flex:row;
+}
+.phoneNumber{
+  font-size:13px;
+  padding-left:5px;
+}
+.email{
+  font-size:13px;
+}
 .info{
   display: inline-block;
-  width:90px;
+  width:110px;
 }
 .investordescription{
   border:1px solid rgb(218, 218, 218);
   color: #EF6C2A;
   padding:10px;
   padding-top:2px;
-  width:500px;
+  width:700px;
   height:200px;
 }
 .companyandinterests{
   display:flex;
   flex:row;
+  width:720px;
+  border:1px solid rgb(218, 218, 218);
+  margin-top:10px;
 }
-
+h1,h2,h3,h4,h5,h6{
+  color: #3CCDEA;
+}
+p{
+  color: #EF6C2A;
+}
 .tags{
   width:40%;
   margin-top: 10px;
@@ -62,30 +81,34 @@
   padding-right:15px;
 }
 .interests{
-   border:1px solid rgb(218, 218, 218);
    margin-top: 10px;
+   width:50%;
 }
-
+.currentcompanyinfo{
+  margin-top: 10px;
+  width:50%;
+}
 #small{
   font-size: 10px;
   color:#D3D3D3
 }
-.header-title{
-  text-align:center;
-  border-bottom: 1px solid rgb(218, 218, 218);
+.viewheader-card{
+  padding-left:12px;
 }
 .view-item{
   display:flex;
   flex:row;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgb(218, 218, 218);
+}
+.view-body{
+  padding-top:-10px;
 }
 .view-item img{
+  width:60px;
   padding: 10px;
 }
 #followersunder{
-  margin-left: 50px;
-  margin: 0 auto;
+  margin-left: 15px;
   padding-top: 25px;
-  font-size:30px;
+  font-size:20px;
 }
