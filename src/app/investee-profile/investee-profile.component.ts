@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvesteeProfileComponent implements OnInit {
 
-  constructor() { }
+  hasIdea: boolean;
+  displayModal: boolean;
+  constructor() {
+    this.hasIdea = false;
+    this.displayModal = false;
+  }
 
   ngOnInit() {
+  }
+
+  showModal(): void {
+    this.displayModal = !this.displayModal;
   }
 
 }

@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from '../../../node_modules/rxjs';
+import { Investor } from '../models/Investor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvestorService {
 
-  constructor(private http: HttpClient) { }
+  user: Investor;
+  constructor(private http: HttpClient) { 
+    this.user = null;
+  }
 
   signup(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investor/signup', user);
@@ -15,5 +19,13 @@ export class InvestorService {
 
   login(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investor/login', user);
+  }
+
+  setInvestor(investor): void {
+    this.user = investor;
+  }
+
+  getInvestor(): Investor {
+    return this.user;
   }
 }

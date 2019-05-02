@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { FeedComponent } from './feed/feed.component';
 import { InvestorProfileComponent } from './investor-profile/investor-profile.component';
 import { InvesteeProfileComponent } from './investee-profile/investee-profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'investee-profile',
     component: InvesteeProfileComponent
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
   }
 ];
 

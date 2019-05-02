@@ -58,7 +58,14 @@ export class RegisterComponent implements OnInit {
         err => {console.log(err)}
       );
     } else if (parseInt(this.loginInformation.userType) === 2){
-      this.investeeService.login(this.loginInformation);
+      this.investeeService.login(this.loginInformation).subscribe(
+        (res) => {
+
+        },
+        (err) => {
+
+        }
+      );
     } else {
       console.log('Did not select user type');
     }
@@ -76,9 +83,16 @@ export class RegisterComponent implements OnInit {
 
         );
     } else if (parseInt(this.signUpInformation.userType) === 2){
-      this.investeeService.signup(this.signUpInformation);
+      this.investeeService.signup(this.signUpInformation).subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+
+        }
+      );
     } else {
-      console.log('Did not select user type')
+      console.log('Did not select user type');
     }
   }
 

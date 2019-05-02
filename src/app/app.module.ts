@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ProfileNavbarComponent } from './profile-navbar/profile-navbar.component';
 import { AuthInterceptor } from './Authentication/auth-interceptor';
+import { SettingsComponent } from './settings/settings.component';
 // import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthInterceptor } from './Authentication/auth-interceptor';
     InvesteeProfileComponent,
     NavbarComponent,
     FooterComponent,
-    ProfileNavbarComponent
+    ProfileNavbarComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

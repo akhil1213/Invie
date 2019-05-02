@@ -32,9 +32,38 @@
         </div>
       </div>
       <div class="business-idea">
-        <div class="add-button">
-          <button class="button">Create Business Idea</button>
+        <div class="add-button" *ngIf="!hasIdea">
+          <button (click)="showModal()" class="button">Create Business Idea</button>
+        </div>
+        <div class="idea" *ngIf="hasIdea">
+          idea displayed here
         </div>
       </div>
     </div>
   </div>
+<!-- Business Idea Modal-->
+<div class="create-modal" *ngIf="displayModal">
+  <div id="mainModalDiv" class="modal animate">
+    <span (click)="showModal()" class="close">&times;</span>
+    <form  class="modal-content">
+      <div class="header">
+        <h1 style="text-align: center">Create a Business Idea</h1>
+      </div>
+      <!--Form Contents-->
+      <div class="modal-container">
+        <!--Idea Name-->
+        <div class="input-group">
+          <label>Idea Name</label>
+          <input id="inputClass" type="text" name="pname">
+        </div>
+        <!--Objective-->
+        <div class="input-group">
+            <label>Objective</label>
+            <input id="inputClass" type="text" name="pname">
+        </div>
+      </div>
+        <!--Submit-->
+        <button>Create Idea</button>
+    </form>
+  </div>
+</div>
