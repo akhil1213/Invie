@@ -14,6 +14,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ProfileNavbarComponent } from './profile-navbar/profile-navbar.component';
 import { AuthInterceptor } from './Authentication/auth-interceptor';
 import { SettingsComponent } from './settings/settings.component';
+import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.component';
 // import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SettingsComponent } from './settings/settings.component';
     NavbarComponent,
     FooterComponent,
     ProfileNavbarComponent,
-    SettingsComponent
+    SettingsComponent,
+    SettingsNavbarComponent
   ],
   imports: [
     BrowserModule,

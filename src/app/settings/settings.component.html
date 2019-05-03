@@ -1,3 +1,41 @@
-<p>
-  settings works!
-</p>
+<div class = "container">
+<app-settings-navbar></app-settings-navbar>
+    <div class = "header">
+      <div class = "para">
+        <h2>Name of user, you're the boss of your account</h2>
+      </div>
+    <div class = "info">
+      <div class = "imagediv">
+        <img src = "../../assets/accenture.png" width = "45px" height = "50px">
+      </div>
+      <div class = "descriptiondiv">
+          <div class = "name">
+            <p>Investor name</p>
+          </div>
+          <div class = "description">
+              <p>Investor - mini description</p>
+          </div>
+          <div class = "membersince">
+              <p>Member since Jan 25,2017</p>
+          </div>
+        </div>
+    </div>
+    <div>
+      <p>30 companys invested in</p>
+      <hr>
+    </div>
+  </div>
+  <div class = "options">
+      <ul>
+        <li>Account</li>
+        <li id = "secondli">Privacy</li>
+      </ul>
+  </div>
+  <div *ngIf = "accountClicked">
+      <button>Change email address</button>
+      <button>Change password</button>
+  </div>
+  <div *ngIf = "privacyClicked">
+      <p>Who can see your email address</p>
+  </div>
+</div>

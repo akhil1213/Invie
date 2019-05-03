@@ -1,0 +1,41 @@
+.container{
+    overflow-y: scroll;
+}
+.header{
+    background-color: #35e8e8;
+    display:inline-block;
+    width:100%;
+    height:210px;
+}
+.para{
+    text-align: center;
+    color:white;
+}
+.info{
+    padding-left:10px;
+    float:left;
+    width:60%;
+    height:100px;
+    display:flex;
+    flex:row;
+    color:white;
+}
+.info img{
+    border-radius: 50%;
+}
+.descriptiondiv{
+    padding:10px;
+}
+li{
+    list-style: none;
+    display:inline-block;
+    padding-left:220px;
+    font-size: 20px;
+    color:blue;
+}
+li:hover{
+    color:gray;
+}
+.options{
+    border-bottom: 1px solid rgb(218,218,218);
+}
