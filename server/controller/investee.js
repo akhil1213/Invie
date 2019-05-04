@@ -1,7 +1,7 @@
 const Investee = require("../models/Investee");
 const jwt = require("jsonwebtoken");
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 
 exports.createInvestee = (req, res, next) => {
@@ -64,10 +64,12 @@ exports.loginInvestee = (req, res, next) => {
 }
 
 
-exports.updateInvesteeDesc = (req,res,next) => {
+exports.updateInvestee = (req,res,next) => {
   Investee.findOneAndUpdate(
-    {email: req.data.email},
-    {description: req.body.newDescription})
+    {email: req.data.email, _id: req.data.investeeId},
+    {name: req.body.name,
+      phoneNumber: req.body.phoneNumber,
+      description: req.body.description})
     .then(documents => {
       res.status(200).json({
         message: "Updated Description Successfully",
