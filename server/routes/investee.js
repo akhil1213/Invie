@@ -7,6 +7,6 @@ router.post("/signup", InvesteeController.createInvestee);
 
 router.post("/login", InvesteeController.loginInvestee);
 
-router.patch("/updateDesc", InvesteeController.updateInvesteeDesc);
+router.patch("/updateDesc", InvesteeController.updateInvestee);
 
 module.exports = router;
