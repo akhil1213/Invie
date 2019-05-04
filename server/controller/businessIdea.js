@@ -42,7 +42,16 @@ exports.getBusinessIdea = (req, res, next) => {
 
 exports.updateBusinessIdea = (req, res, next) => {
   Investee.findOneAndUpdate (
-      {userId : req.data.InvesteeId})
+      {userId : req.data.InvesteeId},
+        {
+          name: req.body.name,
+          objective: req.body.objective,
+          description: req.body.description,
+          weblink: req.body.weblink,
+          tags: req.body.tags,
+          owners: req.body.owners,
+          typeOfBusiness: req.typeOfBusiness
+        })
       .then(documents => {
           res.status(200).json({
               message: "Updated BusinessIdea",
