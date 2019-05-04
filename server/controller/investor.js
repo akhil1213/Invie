@@ -15,7 +15,7 @@ exports.createInvestor = (req, res, next) => {
     investor.save()
       .then(result => {
         res.status(201).json({
-          message: 'Investor user created!',
+          message: 'Investor user created successfully!',
           result: result
         });
       })
@@ -77,7 +77,7 @@ exports.updateInvestor = (req,res,next) => {
       interest: req.body.interest})
     .then(documents => {
       res.status(200).json({
-        message: "Updated Description Successfully",
+        message: "Updated Description Successfully!",
         posts: documents
       });
     })
