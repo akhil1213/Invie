@@ -1,7 +1,7 @@
 const Investee = require("../models/Investee");
 const jwt = require("jsonwebtoken");
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 
 exports.createInvestee = (req, res, next) => {
