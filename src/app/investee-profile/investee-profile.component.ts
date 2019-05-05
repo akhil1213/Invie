@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BusinessIdea } from '../models/BusinessIdea';
 
 @Component({
   selector: 'app-investee-profile',
@@ -9,9 +10,27 @@ export class InvesteeProfileComponent implements OnInit {
 
   hasIdea: boolean;
   displayModal: boolean;
+  businessIdea: BusinessIdea;
+  owner: string;
+  tags: string;
   constructor() {
-    this.hasIdea = false;
+    this.hasIdea = true;
     this.displayModal = false;
+    this.businessIdea = {
+      _id: '',
+      userId: '',
+      name: '',
+      objective: '',
+      description: '',
+      webLink: '',
+      tags: [],
+      owners: [],
+      typeOfBusiness: '',
+      phoneNumbers: '',
+      views: ''
+    };
+    this.owner = '';
+    this.tags = '';
   }
 
   ngOnInit() {
@@ -21,4 +40,11 @@ export class InvesteeProfileComponent implements OnInit {
     this.displayModal = !this.displayModal;
   }
 
+  createBusinessIdea(): void {
+    console.log(this.businessIdea);
+    const tags = this.tags.split(' ');
+    this.businessIdea.owners.push(this.owner);
+    this.businessIdea.tags = tags;
+    console.log(this.businessIdea);
+  }
 }

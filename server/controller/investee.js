@@ -15,7 +15,7 @@ exports.createInvestee = (req, res, next) => {
       investee.save()
         .then(result => {
           res.status(201).json({
-            message: 'Investee user created!',
+            message: 'Investee user created successfully!',
             result: result
           });
         })

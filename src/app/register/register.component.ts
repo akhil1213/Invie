@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { InvestorService } from '../services/investor.service';
 import { InvesteeService } from '../services/investee.service';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -26,14 +27,15 @@ export class RegisterComponent implements OnInit {
     password: '',
     passwordRetype: '',
     userType: ''
-  }
+  };
 
   private token = 'blank';
   private expTime: Date = new Date();
 
   constructor(
     private investorService: InvestorService,
-    private investeeService: InvesteeService) {}
+    private investeeService: InvesteeService,
+    private router: Router) {}
 
   /*ngAfterViewInit(){
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
@@ -46,7 +48,7 @@ export class RegisterComponent implements OnInit {
   }
 
   login(): void {
-    if (parseInt(this.loginInformation.userType) === 1 ){
+    if (parseInt(this.loginInformation.userType) === 1 ) {
       this.investorService.login(this.loginInformation).subscribe(
         res => {
           console.log(res);
@@ -54,13 +56,24 @@ export class RegisterComponent implements OnInit {
           const currentTime = new Date();
           this.expTime = new Date(currentTime.getTime() + res.expiresIn);
           this.saveAuthDataLocal(this.token, this.expTime);
+          const user = JSON.parse(localStorage.getItem('user'));
+          this.investeeService.setInvestee(user);
+          this.router.navigate(['/feed']);
         },
-        err => {console.log(err)}
+        err => {
+          console.log(err);
+        }
       );
-    } else if (parseInt(this.loginInformation.userType) === 2){
+    } else if (parseInt(this.loginInformation.userType) === 2) {
       this.investeeService.login(this.loginInformation).subscribe(
         (res) => {
-
+          this.token = res.token;
+          const currentTime = new Date();
+          this.expTime = new Date(currentTime.getTime() + res.expiresIn);
+          this.saveAuthDataLocal(this.token, this.expTime);
+          const user = JSON.parse(localStorage.getItem('user'));
+          this.investeeService.setInvestee(user);
+          this.router.navigate(['/feed']);
         },
         (err) => {
 
@@ -75,7 +88,14 @@ export class RegisterComponent implements OnInit {
     if (parseInt(this.signUpInformation.userType) === 1){
       this.investorService.signup(this.signUpInformation).subscribe(
         (res) => {
-          console.log(res);
+          console.log('Investor signed up!');
+          const user = res.result;
+          this.loginInformation = {
+            email: user.email,
+            password: this.signUpInformation.password,
+            userType: '1'
+          };
+          this.login();
         },
         (err) => {
           console.log(err);
@@ -85,7 +105,14 @@ export class RegisterComponent implements OnInit {
     } else if (parseInt(this.signUpInformation.userType) === 2){
       this.investeeService.signup(this.signUpInformation).subscribe(
         (res) => {
-          console.log(res);
+          console.log('Investee signed up!');
+          const user = res.result;
+          this.loginInformation = {
+            email: user.email,
+            password: this.signUpInformation.password,
+            userType: '2'
+          };
+          this.login();
         },
         (err) => {
 
@@ -105,11 +132,4 @@ export class RegisterComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
   }
- /* accountMade(){
-    if(this.email != "" && this.password1.valueOf() == this.password2.valueOf() && this.password1 != ""){
-      this.authService.createUser(this.email,this.password1,this.userType);
-    }
-  }*/
-
-
 }

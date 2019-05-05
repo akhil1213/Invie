@@ -54,6 +54,25 @@
   padding:10px;
 }
 
+.idea-card{
+  border: 1px solid rgb(218, 218, 218);
+  margin-top:20px;
+  width: 1000px;
+  height:500px;
+  padding:10px;
+}
+
+.idea-body{
+  display:flex;
+  flex-direction: row;
+}
+
+.idea-description{
+  width:60%;
+}
+.idea-tags{
+  margin-top:15px;
+}
 .button{
   background-color: #EF6C2A;
   border: none;
@@ -86,6 +105,7 @@ MODAL CSS
   background-color:rgba(175, 175, 175, 0.932);
   width:100%;
   height:100%;
+  overflow-y:scroll;
   top:0px;
   left:0px;
   z-index:2;
@@ -166,7 +186,7 @@ textarea{
   left: 0;
   top: 0;
   width: 40%; /* Full width */
-  height: 75%; /* Full height */
+  height: 80%; /* Full height */
   min-width: 600px;
   /*overflow: auto; /* Enable scroll if needed */
   background-color: #fefefe; /* Fallback color */
