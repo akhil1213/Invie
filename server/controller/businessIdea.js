@@ -40,9 +40,10 @@ exports.getBusinessIdea = (req, res, next) => {
 	});
 }
 
+
 exports.updateBusinessIdea = (req, res, next) => {
   Investee.findOneAndUpdate (
-      {userId : req.data.InvesteeId},
+      {userId : req.data.investeeId},
         {
           name: req.body.name,
           objective: req.body.objective,

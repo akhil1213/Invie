@@ -10,12 +10,25 @@ router.post("/signup", InvesteeController.createInvestee);
 
 router.post("/login", InvesteeController.loginInvestee);
 
+//Use this route to initialize the first business idea for user to the database.
+//This route will only create an empty idea with the users _id linked to it.
+//You do not need to pass in any information.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.post("/createIdea", midAuth, BusinessIdeaController.createBusinessIdea);
 
+//Use this route to retrieve the business idea.
+//You do not need to pass in any information.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.get("/getIdea", midAuth, BusinessIdeaController.getBusinessIdea);
 
+//Use this route to update user business idea information.
+//All the frontend needs to pass in is: name, objective, description, weblink, tags (array), owners (array), typeOfBusiness.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.patch("/updateIdea", midAuth, BusinessIdeaController.updateBusinessIdea);
 
+//Use this route to update investee information.
+//Information that need to be passed in from the frontend: name, phoneNumber, description.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.patch("/updateDesc", midAuth, InvesteeController.updateInvestee);
 
 module.exports = router;
