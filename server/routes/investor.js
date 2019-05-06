@@ -13,4 +13,9 @@ router.post("/login", InvestorController.loginInvestor);
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.patch("/updateDesc", midAuth, InvestorController.updateInvestor);
 
+//Use this route to retrieve the investor information.
+//You do not need to pass in any information.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
+router.get("/getInvestor", midAuth, InvestorController.getInvestor);
+
 module.exports = router;
