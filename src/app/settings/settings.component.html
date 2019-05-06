@@ -25,11 +25,9 @@
       <hr>
     </div>
   </div>
-  <div class = "options">
-      <ul>
-        <li><button #account (click) = "accountClicked()"(click) = "privacyClicked = false" class = "button">Account</button></li>
-        <li><button #privacy class = "button" (click) = "privacyClicked = true">Privacy</button></li>
-      </ul>
+  <div class = "options" #options>
+        <div class ="option"><button id ="accountButton"  (click) = "optionEntered('account')"(click) = "privacyClicked = false" class = " newClass button">Account</button></div>
+        <div class ="option"><button id = "privacyButton" (click) = "optionEntered('privacy')"class = "button" (click) = "privacyClicked = true">Privacy</button></div>
   </div>
   <div *ngIf = "!privacyClicked">
     <div class ="allcards">
@@ -39,7 +37,7 @@
       <div class = "change-card" (click) = "emailClicked = true; phoneClicked = false; passwordClicked = false">
           <h4>Change your email address</h4>
           <div class = "change" *ngIf = "emailClicked">
-            <h5> Your current email address: </h5>
+            <h5> Your current email address: lebron@gmail.com </h5>
               <form>
                 <div class = "form">
                   <label for = "username">Email:</label>
@@ -52,7 +50,7 @@
       <div class = "change-card" (click) = "emailClicked = false; phoneClicked = true; passwordClicked = false" >
           <h4>Change your phone number</h4>
           <div class = "change" *ngIf = "phoneClicked">
-              <h5> Your current Phone Number is: </h5>
+              <h5> Your current Phone Number is: 911 </h5>
                 <form>
                   <div class = "form">
                     <label for = "username">New Phone Number:</label>
@@ -65,7 +63,7 @@
       <div class = "change-card" (click) = "emailClicked = false; phoneClicked = false; passwordClicked = true">
           <h4>Change password</h4>
           <div class = "change" *ngIf = "passwordClicked">
-              <h5> Your current Phone Number is: </h5>
+              <h5>Enter your new password: </h5>
                 <form>
                   <div class = "form">
                     <label for = "username">Enter password:</label>
@@ -80,6 +78,37 @@
     </div>
   </div>
   <div *ngIf = "privacyClicked">
-      <p>Who can see your email address</p>
+      <div class = "change-card">
+          <h4>Who can see your email-address/phone-number</h4>
+          <div class = "change">
+              <h5>Who can see lebron@gmail.com? or 911</h5>
+              <!-- This changes depending on if an investor is on the settings page or investee is on investee page. -->
+                <form>
+                    <select name = "displayEmailTo">
+                      <option value = "everyone">Anyone</option><!-- if this is chosen then even users who arent logged in can see it-->
+                      <option value = "loggedInUsers">All investees</option><!-- all investees but users who arent logged in cant see the email address.. this is important because these investors emails and numbers should be private. what if lebrons an investor and he keeps getting calls from brian.-->
+                      <option value = "Current Interests">Current interests only</option>
+                    </select>
+                    <input type="submit">
+                </form>
+          </div>
+      </div>
+      <div class = "change-card">
+        <!-- We can leave this part unimplemented seems like a lot of work.  -->
+        <!-- this is also a website for investors who already found their interests to constantly interact with each other as well so maybe those investors are done investing in companies and only want their interests to see their feed. -->
+        <h4>Who can see your feed page</h4>
+        <div class = "change">
+            <h5>Keep your feed secure</h5>
+            <!-- This changes depending on if an investor is on the settings page or investee is on investee page. -->
+              <form>
+                  <select name = "displayFeedTo">
+                    <option value = "everyone">Anyone</option><!-- if this is chosen then even users who arent logged in can see it-->
+                    <option value = "loggedInUsers">All investees</option><!-- all investees but users who arent logged in cant see the email address.. this is important because these investors emails and numbers should be private. what if lebrons an investor and he keeps getting calls from brian.-->
+                    <option value = "Current Interests">Current interests only</option>
+                  </select>
+                  <input type="submit">
+              </form>
+          </div>
+      </div>
   </div>
 </div>

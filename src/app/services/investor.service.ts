@@ -20,7 +20,6 @@ export class InvestorService {
   login(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investor/login', user);
   }
-
   setInvestor(investor): void {
     this.user = investor;
   }
