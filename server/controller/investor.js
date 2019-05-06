@@ -14,6 +14,7 @@ exports.createInvestor = (req, res, next) => {
     });
     investor.save()
       .then(result => {
+        delete result.password;
         res.status(201).json({
           message: 'Investor user created successfully!',
           result: result
@@ -53,8 +54,7 @@ exports.loginInvestor = (req, res, next) => {
           );
           res.status(200).json({
             token: token,
-            expiresIn: 24*3600000,
-            result: result
+            expiresIn: 24*3600000
           });
       }
     })
@@ -66,6 +66,31 @@ exports.loginInvestor = (req, res, next) => {
     });
 }
 
+exports.getInvestor = (req, res, next) => {
+  Investor.findOne(
+    {email: req.data.email, _id: req.data.investorId}
+  )
+  .then(result => {
+    if(!result) {
+      return res.status(401).json({
+        message: error
+      });
+    }
+    else {
+      delete result.password;
+      delete result._id;
+      res.status(201).json({
+        message: 'Retrieved user information.',
+        result: result
+      });
+    }
+  })
+  .catch(error => {
+    res.status(401).json({
+      message: error
+    });
+  });
+}
 
 exports.updateInvestor = (req,res,next) => {
   Investor.findOneAndUpdate(
@@ -77,9 +102,11 @@ exports.updateInvestor = (req,res,next) => {
       currentCompany: req.body.currnetCompany,
       interest: req.body.interest})
     .then(documents => {
+      delete document.password;
+      delete document._id;
       res.status(200).json({
         message: "Updated Description Successfully!",
-        posts: documents
+        result: documents
       });
     })
     .catch(error => {

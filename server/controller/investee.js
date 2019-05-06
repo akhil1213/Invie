@@ -14,6 +14,7 @@ exports.createInvestee = (req, res, next) => {
       });
       investee.save()
         .then(result => {
+          delete result.password;
           res.status(201).json({
             message: 'Investee user created successfully!',
             result: result
@@ -52,8 +53,7 @@ exports.loginInvestee = (req, res, next) => {
           );
           res.status(200).json({
             token: token,
-            expiresIn: 24*3600000,
-            result: result
+            expiresIn: 24*3600000
           });
       }
     })
@@ -64,6 +64,31 @@ exports.loginInvestee = (req, res, next) => {
     });
 }
 
+exports.getInvestee = (req, res, next) => {
+  Investee.findOne(
+    {email: req.data.email, _id: req.data.investeeId}
+  )
+  .then(result => {
+    if(!result) {
+      return res.status(401).json({
+        message: error
+      });
+    }
+    else {
+      delete result.password;
+      delete result._id;
+      res.status(201).json({
+        message: 'Retrieved user information.',
+        result: result
+      });
+    }
+  })
+  .catch(error => {
+    res.status(401).json({
+      message: error
+    });
+  });
+}
 
 exports.updateInvestee = (req,res,next) => {
   Investee.findOneAndUpdate(
@@ -72,9 +97,11 @@ exports.updateInvestee = (req,res,next) => {
       phoneNumber: req.body.phoneNumber,
       description: req.body.description})
     .then(documents => {
+      delete document.password;
+      delete document._id;
       res.status(200).json({
         message: "Updated Description Successfully",
-        posts: documents
+        result: documents
       });
     })
     .catch(error => {

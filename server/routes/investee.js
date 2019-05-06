@@ -31,4 +31,9 @@ router.patch("/updateIdea", midAuth, BusinessIdeaController.updateBusinessIdea);
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.patch("/updateDesc", midAuth, InvesteeController.updateInvestee);
 
+//Use this route to retrieve the investee information.
+//You do not need to pass in any information.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
+router.get("/getInvestee", midAuth, InvesteeController.getInvestee);
+
 module.exports = router;
