@@ -52,7 +52,8 @@ exports.loginInvestee = (req, res, next) => {
           );
           res.status(200).json({
             token: token,
-            expiresIn: 24*3600000
+            expiresIn: 24*3600000,
+            result: result
           });
       }
     })
