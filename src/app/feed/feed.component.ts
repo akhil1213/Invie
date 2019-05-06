@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
+  typeOfUser: number;
   constructor() { }
 
   ngOnInit() {
+    this.typeOfUser = parseInt(localStorage.getItem('typeOfUser'));
+    // Investor Data
+    if (this.typeOfUser === 1) {
+
+    } else {
+      // Ivestee Data
+    }
   }
 
 }

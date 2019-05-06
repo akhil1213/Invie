@@ -36,7 +36,7 @@
   <!--Feed Content-->
   <div class="feed-content">
     <!--Display Investor List if the user that logged in is an investee-->
-    <div class="investor-list">
+    <div class="investor-list" *ngIf="typeOfUser == 1">
       <div class="feed-card">
         <div class="card-container">
           <div class="investor-header">
@@ -62,7 +62,7 @@
 
 
     <!--Display Investee List if the user that logged in is an investor-->
-    <div class="investee-list">
+    <div class="investee-list" *ngIf="typeOfUser == 2">
       <div class="feed-card">
         <div class="card-container">
           <div class = "investee-header">
