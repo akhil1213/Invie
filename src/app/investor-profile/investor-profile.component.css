@@ -18,12 +18,15 @@
 
 }
 .image{
-    margin-top:10px;
+  margin-top: 10px !important;
+  margin-left: -12px !important;
+  height: 140px;
+  width: 140px;
 }
 
 .contact{
-  margin-left: 30px;
-  margin-top: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
   width:280px;
   border:1px solid rgb(218, 218, 218);
   text-align: center;
@@ -31,20 +34,32 @@
   font-size:10px;
   height:400px;
 }
-.phonewithpic{
-  display:flex;
-  flex:row;
-}
+
 .phoneNumber{
   font-size:13px;
-  padding-left:5px;
+  margin-left: -5px;
+
 }
 .email{
   font-size:13px;
+  margin-left: -9px;
 }
+.investorWebsite{
+  font-size:13px;
+  margin-left: -10px;
+}
+.info a{
+  font-size:13px;
+  color: black;
+  text-decoration: none;
+}
+.info a:hover{
+  text-decoration: underline;
+}
+
 .info{
   display: inline-block;
-  width:110px;
+  width:210px;
 }
 .investordescription{
   border:1px solid rgb(218, 218, 218);
@@ -81,11 +96,9 @@ p{
   padding-right:15px;
 }
 .interests{
-   margin-top: 10px;
    width:50%;
 }
 .currentcompanyinfo{
-  margin-top: 10px;
   width:50%;
 }
 #small{
@@ -104,7 +117,9 @@ p{
   padding-top:-10px;
 }
 .view-item img{
-  width:60px;
+  position: relative;
+  top:-10px;
+  width:75px;
   padding: 10px;
 }
 #followersunder{
