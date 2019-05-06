@@ -14,7 +14,8 @@
         </li>
         <!--Scrolls to Item 2-->
         <li>
-          <a class="link" href="javascript:void(0)">Profile</a>
+          <a routerLink="/investor-profile" class="link" href="javascript:void(0)" *ngIf="typeOfUser == 1">Profile</a>
+          <a routerLink="/investee-profile" class="link" href="javascript:void(0)" *ngIf="typeOfUser == 2">Profile</a>
         </li>
         <!--Scrolls to Item 3-->
         <li>
@@ -22,7 +23,7 @@
         </li>
         <!--Takes you to login page-->
         <li>
-          <a class="link" href="javascript:void(0)">Logout</a>
+          <a (click)="logout()" class="link" href="javascript:void(0)">Logout</a>
         </li>
       </ul>
     </div>
