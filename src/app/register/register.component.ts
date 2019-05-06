@@ -58,6 +58,7 @@ export class RegisterComponent implements OnInit {
           this.saveAuthDataLocal(this.token, this.expTime);
           const user = JSON.parse(localStorage.getItem('user'));
           this.investeeService.setInvestee(user);
+          localStorage.setItem('typeOfUser', '1');
           this.router.navigate(['/feed']);
         },
         err => {
@@ -73,6 +74,7 @@ export class RegisterComponent implements OnInit {
           this.saveAuthDataLocal(this.token, this.expTime);
           const user = JSON.parse(localStorage.getItem('user'));
           this.investeeService.setInvestee(user);
+          localStorage.setItem('typeOfUser', '2');
           this.router.navigate(['/feed']);
         },
         (err) => {

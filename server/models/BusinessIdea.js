@@ -58,4 +58,4 @@ var businessideaSchema = new mongoose.Schema({
 
 businessideaSchema.plugin(validator);
 
-module.exports = mongoose.model('BusinessIdea', BusinessideaSchema);
+module.exports = mongoose.model('BusinessIdea', businessideaSchema);
