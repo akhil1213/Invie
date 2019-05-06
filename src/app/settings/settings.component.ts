@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  newEmail:string;
 
   constructor() { }
 
   ngOnInit() {
   }
+  accountClicked(){}
 
 }
