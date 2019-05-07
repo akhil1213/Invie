@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BusinessIdea } from '../models/BusinessIdea';
+import { InvesteeService } from '../services/investee.service';
 
 @Component({
   selector: 'app-investee-profile',
@@ -10,12 +11,15 @@ export class InvesteeProfileComponent implements OnInit {
 
   hasIdea: boolean;
   displayModal: boolean;
+  editModal: boolean;
+  currentUser;
   businessIdea: BusinessIdea;
   owner: string;
   tags: string;
-  constructor() {
-    this.hasIdea = true;
+  constructor(private investeeService: InvesteeService) {
+    this.hasIdea = false;
     this.displayModal = false;
+    this.editModal = false;
     this.businessIdea = {
       _id: '',
       userId: '',
@@ -34,10 +38,32 @@ export class InvesteeProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.investeeService.setInvestee(user);
+    this.currentUser = user;
   }
 
   showModal(): void {
     this.displayModal = !this.displayModal;
+  }
+
+  showEditModal(): void {
+    this.editModal = !this.editModal;
+  }
+
+  updateProfile(): void {
+    const requiredInformation = {
+      name: this.currentUser.name,
+      phoneNumber: this.currentUser.phoneNumber,
+      description: this.currentUser.description
+    };
+    this.investeeService.updateInvestee(requiredInformation).subscribe(
+      (res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      }
+    );
   }
 
   createBusinessIdea(): void {

@@ -8,9 +8,9 @@
             <img src="../../assets/user-male.png" />
         </div>
         <div class="profile-container">
-          <label>Brian Aguilar</label>
-          <label>123-456-7890</label>
-          <label>Web Link</label>
+          <label>{{currentUser.name}}</label>
+          <label>{{currentUser.phoneNumber}}</label>
+          <a (click)="showEditModal()" href="javascript:void(0)">Edit Profile</a>
         </div>
       </div>
     </div>
@@ -22,11 +22,11 @@
             <h2>Description</h2>
           </div>
           <div class="description-body">
-            <p>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            <p *ngIf="currentUser.description !== '' ">
+                {{currentUser.description}}
+            </p>
+            <p *ngIf="currentUser.description === '' ">
+                Add a description!
             </p>
           </div>
         </div>
@@ -65,7 +65,7 @@
 <div class="create-modal" *ngIf="displayModal">
   <div id="mainModalDiv" class="modal animate">
     <span (click)="showModal()" class="close">&times;</span>
-    <form  class="modal-content">
+    <div class="modal-content">
       <div class="header">
         <h1 style="text-align: center">Create a Business Idea</h1>
       </div>
@@ -109,6 +109,37 @@
         <!--Submit-->
         <button (click)="createBusinessIdea()">Create Idea</button>
       </div>
-    </form>
+    </div>
+  </div>
+</div>
+<!-- Business Idea Modal-->
+<div class="create-modal" *ngIf="editModal">
+  <div id="mainModalDiv" class="modal animate">
+    <span (click)="showEditModal()" class="close">&times;</span>
+    <div class="modal-content">
+      <div class="header">
+        <h1 style="text-align: center">Edit Profile</h1>
+      </div>
+      <!--Form Contents-->
+      <div class="modal-container">
+        <!--Name-->
+        <div class="input-group">
+          <label>Name</label>
+          <input [(ngModel)]="currentUser.name" value="currentUser.name" id="inputClass" type="text" name="pname">
+        </div>
+        <!--Phone Number-->
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input [value]="currentUser.phoneNumber" [(ngModel)]="currentUser.phoneNumber" id="inputClass" type="text" name="pname">
+        </div>
+        <!--Description-->
+        <div class="input-group">
+          <label>Description</label>
+          <textarea [value]="currentUser.description" [(ngModel)]="currentUser.description"></textarea>
+        </div>
+        <!--Submit-->
+        <button (click)="updateProfile()">Update Profile</button>
+      </div>
+    </div>
   </div>
 </div>

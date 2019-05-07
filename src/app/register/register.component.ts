@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private investorService: InvestorService,
     private investeeService: InvesteeService,
+    private tokenService: Token,
     private router: Router,
     private token: Token) {}
 
@@ -47,16 +48,8 @@ export class RegisterComponent implements OnInit {
     if (parseInt(this.loginInformation.userType) === 1 ) {
       this.investorService.login(this.loginInformation).subscribe(
         res => {
-          console.log(res);
-          this.token.setToken(res.token);
-          const currentTime = new Date();
-          this.expTime = new Date(currentTime.getTime() + res.expiresIn);
-          this.saveAuthDataLocal(this.token.getToken(), this.expTime);
-          // const user = JSON.parse(localStorage.getItem('user'));
-          // this.investeeService.setInvestee(user);
-          localStorage.setItem('typeOfUser', '1');
+          this.setAuthData(res, '1');
           this.getInvestorData();
-          //this.router.navigate(['/feed']);
         },
         err => {
           console.log(err);
@@ -65,14 +58,9 @@ export class RegisterComponent implements OnInit {
     } else if (parseInt(this.loginInformation.userType) === 2) {
       this.investeeService.login(this.loginInformation).subscribe(
         (res) => {
-          this.token.setToken(res.token);
-          const currentTime = new Date();
-          this.expTime = new Date(currentTime.getTime() + res.expiresIn);
-          this.saveAuthDataLocal(this.token.getToken(), this.expTime);
-          const user = JSON.parse(localStorage.getItem('user'));
-          this.investeeService.setInvestee(user);
           localStorage.setItem('typeOfUser', '2');
-         // this.router.navigate(['/feed']);
+          this.setAuthData(res, '2');
+          this.getInvesteeData();
         },
         (err) => {
 
@@ -93,7 +81,7 @@ export class RegisterComponent implements OnInit {
             password: this.signUpInformation.password,
             userType: '1'
           };
-          //this.login();
+          this.login();
         },
         (err) => {
           console.log(err);
@@ -120,10 +108,17 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  /**
+   * Gets the investor data and sends them
+   * to the feed page
+   */
   getInvestorData(): void {
     this.investorService.getInvestorData().subscribe(
       (result) => {
-        console.log(result);
+        const user = result.result;
+        this.investorService.setInvestor(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        this.router.navigate(['/feed']);
       },
       (error) => {
 
@@ -131,6 +126,42 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  /**
+   * Gets the investee data and sends them
+   * to the feed page
+   */
+  getInvesteeData(): void {
+    this.investeeService.getInvesteeData().subscribe(
+      (res) => {
+        const user = res.result;
+        this.investeeService.setInvestee(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        this.router.navigate(['/feed']);
+      }, (err) => {
+
+      }
+    );
+  }
+
+  /**
+   * Sets the necessary auth data for the frontend
+   * @param res token information
+   * @param userType the type of user
+   */
+  private setAuthData(res, userType) {
+    this.token.setToken(res.token);
+    this.tokenService.setToken(res.token);
+    const currentTime = new Date();
+    this.expTime = new Date(currentTime.getTime() + res.expiresIn);
+    this.saveAuthDataLocal(this.token.getToken(), this.expTime);
+    localStorage.setItem('typeOfUser', userType);
+  }
+
+  /**
+   * Saving the auth data to the local storage
+   * @param token the token value
+   * @param expirationDate when the token expires
+   */
   private saveAuthDataLocal(token, expirationDate: Date) {
     localStorage.setItem('token', token);
     localStorage.setItem('expirationDate', expirationDate.toISOString());

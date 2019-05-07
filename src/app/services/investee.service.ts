@@ -9,7 +9,7 @@ import { Investee } from '../models/Investee';
 export class InvesteeService {
 
   user: Investee;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.user = null;
   }
 
@@ -19,6 +19,14 @@ export class InvesteeService {
 
   login(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investee/login', user);
+  }
+
+  getInvesteeData(): Observable<any> {
+    return this.http.get<any>('//localhost:3000/user/investee/getInvestee');
+  }
+
+  updateInvestee(investee): Observable<any> {
+    return this.http.patch<any>('//localhost:3000/user/investee/updateDesc', investee);
   }
 
   setInvestee(investee): void {
