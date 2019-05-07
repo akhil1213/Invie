@@ -1,16 +1,14 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { InvestorService } from '../services/investor.service';
 import { InvesteeService } from '../services/investee.service';
-import { Injectable } from '@angular/core';
+import { Token } from '../services/token.service';
 import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
-})
-
-@Injectable({
-  providedIn: 'root'
 })
 export class RegisterComponent implements OnInit {
   // Necessary information for login
@@ -29,14 +27,14 @@ export class RegisterComponent implements OnInit {
     userType: ''
   };
 
-  private token = 'blank';
   private expTime: Date = new Date();
   private currentUser = null;
 
   constructor(
     private investorService: InvestorService,
     private investeeService: InvesteeService,
-    private router: Router) {}
+    private router: Router,
+    private token: Token) {}
 
   /*ngAfterViewInit(){
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
@@ -44,19 +42,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  getToken() {
-    return this.token;
-  }
 
   login(): void {
     if (parseInt(this.loginInformation.userType) === 1 ) {
       this.investorService.login(this.loginInformation).subscribe(
         res => {
           console.log(res);
-          this.token = res.token;
+          this.token.setToken(res.token);
           const currentTime = new Date();
           this.expTime = new Date(currentTime.getTime() + res.expiresIn);
-          this.saveAuthDataLocal(this.token, this.expTime);
+          this.saveAuthDataLocal(this.token.getToken(), this.expTime);
           // const user = JSON.parse(localStorage.getItem('user'));
           // this.investeeService.setInvestee(user);
           localStorage.setItem('typeOfUser', '1');
@@ -70,10 +65,10 @@ export class RegisterComponent implements OnInit {
     } else if (parseInt(this.loginInformation.userType) === 2) {
       this.investeeService.login(this.loginInformation).subscribe(
         (res) => {
-          this.token = res.token;
+          this.token.setToken(res.token);
           const currentTime = new Date();
           this.expTime = new Date(currentTime.getTime() + res.expiresIn);
-          this.saveAuthDataLocal(this.token, this.expTime);
+          this.saveAuthDataLocal(this.token.getToken(), this.expTime);
           const user = JSON.parse(localStorage.getItem('user'));
           this.investeeService.setInvestee(user);
           localStorage.setItem('typeOfUser', '2');

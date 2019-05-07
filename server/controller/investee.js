@@ -71,7 +71,7 @@ exports.getInvestee = (req, res, next) => {
   .then(result => {
     if(!result) {
       return res.status(401).json({
-        message: error
+        message: "Not found!"
       });
     }
     else {
