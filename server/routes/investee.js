@@ -35,5 +35,9 @@ router.patch("/updateDesc", midAuth, InvesteeController.updateInvestee);
 //You do not need to pass in any information.
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.get("/getInvestee", midAuth, InvesteeController.getInvestee);
+//Use this route to generate the feed of investors.
+//You don't need to pass information.
+//ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
+router.get("/generateFeed", midAuth, InvesteeController.generateFeed);
 
 module.exports = router;
