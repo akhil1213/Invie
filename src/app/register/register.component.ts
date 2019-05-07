@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
 
   private token = 'blank';
   private expTime: Date = new Date();
+  private currentUser = null;
 
   constructor(
     private investorService: InvestorService,
@@ -56,10 +57,11 @@ export class RegisterComponent implements OnInit {
           const currentTime = new Date();
           this.expTime = new Date(currentTime.getTime() + res.expiresIn);
           this.saveAuthDataLocal(this.token, this.expTime);
-          const user = JSON.parse(localStorage.getItem('user'));
-          this.investeeService.setInvestee(user);
+          // const user = JSON.parse(localStorage.getItem('user'));
+          // this.investeeService.setInvestee(user);
           localStorage.setItem('typeOfUser', '1');
-          this.router.navigate(['/feed']);
+          this.getInvestorData();
+          //this.router.navigate(['/feed']);
         },
         err => {
           console.log(err);
@@ -75,7 +77,7 @@ export class RegisterComponent implements OnInit {
           const user = JSON.parse(localStorage.getItem('user'));
           this.investeeService.setInvestee(user);
           localStorage.setItem('typeOfUser', '2');
-          this.router.navigate(['/feed']);
+         // this.router.navigate(['/feed']);
         },
         (err) => {
 
@@ -86,18 +88,17 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  signup(): void{
+  signup(): void {
     if (parseInt(this.signUpInformation.userType) === 1){
       this.investorService.signup(this.signUpInformation).subscribe(
         (res) => {
-          console.log('Investor signed up!');
           const user = res.result;
           this.loginInformation = {
             email: user.email,
             password: this.signUpInformation.password,
             userType: '1'
           };
-          this.login();
+          //this.login();
         },
         (err) => {
           console.log(err);
@@ -107,7 +108,6 @@ export class RegisterComponent implements OnInit {
     } else if (parseInt(this.signUpInformation.userType) === 2){
       this.investeeService.signup(this.signUpInformation).subscribe(
         (res) => {
-          console.log('Investee signed up!');
           const user = res.result;
           this.loginInformation = {
             email: user.email,
@@ -123,6 +123,17 @@ export class RegisterComponent implements OnInit {
     } else {
       console.log('Did not select user type');
     }
+  }
+
+  getInvestorData(): void {
+    this.investorService.getInvestorData().subscribe(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+
+      }
+    );
   }
 
   private saveAuthDataLocal(token, expirationDate: Date) {

@@ -9,7 +9,7 @@ import { Investor } from '../models/Investor';
 export class InvestorService {
 
   user: Investor;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.user = null;
   }
 
@@ -20,6 +20,11 @@ export class InvestorService {
   login(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investor/login', user);
   }
+
+  getInvestorData(): Observable<any> {
+    return this.http.get<any>('//localhost:3000/user/investor/getInvestor');
+  }
+
   setInvestor(investor): void {
     this.user = investor;
   }
