@@ -31,7 +31,7 @@
         <div class ="option"><button id ="accountButton"  (click) = "optionEntered('account')"(click) = "privacyClicked = false" class = " newClass button">Account</button></div>
         <div class ="option"><button id = "privacyButton" (click) = "optionEntered('privacy')"class = "button" (click) = "privacyClicked = true">Privacy</button></div>
   </div>
-  <div *ngIf = "!privacyClicked">
+  <div *ngIf = "!privacyClicked" class ="optiondiv">
     <div class ="allcards">
       <div class = "header-card">
           <h3>Login and Security</h3>

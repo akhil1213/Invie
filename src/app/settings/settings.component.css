@@ -108,10 +108,16 @@
   }
   .change{
       padding-left:10%;
+      padding-bottom:2%;
   }
   .form{
       cursor:none;
   }
   .newClass{
       border-bottom: 4px solid #3CCDEA;
+  }
+  .optiondiv{
+      overflow-y:scroll;
+      height:100%;
+      /* having height set to 100% gives the scrolling effect its how position:absolute works. */
   }
