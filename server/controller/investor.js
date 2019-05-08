@@ -3,6 +3,17 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 
+const userInfo = (obj) => {
+  return {
+    email: obj.email,
+    name: obj.name,
+    phoneNumber: obj.phoneNumber,
+    description: obj.description,
+    weblink: obj.weblink,
+    currentCompany: obj.currentCompany,
+    interest: obj.interest
+  };
+}
 
 exports.createInvestor = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
@@ -14,10 +25,9 @@ exports.createInvestor = (req, res, next) => {
     });
     investor.save()
       .then(result => {
-        delete result.password;
         res.status(201).json({
           message: 'Investor user created successfully!',
-          result: result
+          result: userInfo(result)
         });
       })
       .catch(error => {
@@ -77,11 +87,9 @@ exports.getInvestor = (req, res, next) => {
       });
     }
     else {
-      delete result.password;
-      delete result._id;
       res.status(201).json({
         message: 'Retrieved user information.',
-        result: result
+        result: userInfo(result)
       });
     }
   })
@@ -99,14 +107,12 @@ exports.updateInvestor = (req,res,next) => {
       phoneNumber: req.body.phoneNumber,
       description: req.body.description,
       weblink: req.body.weblink,
-      currentCompany: req.body.currnetCompany,
+      currentCompany: req.body.currentCompany,
       interest: req.body.interest})
     .then(documents => {
-      delete document.password;
-      delete document._id;
       res.status(200).json({
         message: "Updated Description Successfully!",
-        result: documents
+        result: userInfo(documents)
       });
     })
     .catch(error => {

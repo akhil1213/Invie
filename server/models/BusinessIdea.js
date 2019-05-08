@@ -42,7 +42,7 @@ var businessideaSchema = new mongoose.Schema({
         default: 0
     },
 
-    phoneNumbers: {
+    phoneNumber: {
         type: String,
         default: ''
     },
