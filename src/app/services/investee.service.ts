@@ -9,6 +9,7 @@ import { Investee } from '../models/Investee';
 export class InvesteeService {
 
   user: Investee;
+  businessIdea;
   constructor(private http: HttpClient) {
     this.user = null;
   }
@@ -29,14 +30,34 @@ export class InvesteeService {
     return this.http.patch<any>('//localhost:3000/user/investee/updateDesc', investee);
   }
 
+  createIdea(): Observable<any> {
+    return this.http.post<any>('//localhost:3000/user/investee/createIdea', {});
+  }
+
+  updateIdea(business): Observable<any> {
+    return this.http.patch<any>('//localhost:3000/user/investee/updateIdea', business);
+  }
+
+  getIdeaData(): Observable<any> {
+    return this.http.get<any>('//localhost:3000/user/investee/getIdea');
+  }
   displayFeed():  Observable<any> {
     return this.http.get<any>('//localhost:3000/user/investee/generateFeed');
   }
+
   setInvestee(investee): void {
     this.user = investee;
   }
 
   getInvestee(): Investee {
     return this.user;
+  }
+
+  setIdea(idea): void {
+    this.businessIdea = idea;
+  }
+
+  getIdea() {
+    return this.businessIdea;
   }
 }

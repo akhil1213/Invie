@@ -13,7 +13,7 @@ export class InvesteeProfileComponent implements OnInit {
   displayModal: boolean;
   editModal: boolean;
   currentUser;
-  businessIdea: BusinessIdea;
+  businessIdea;
   owner: string;
   tags: string;
   constructor(private investeeService: InvesteeService) {
@@ -21,17 +21,13 @@ export class InvesteeProfileComponent implements OnInit {
     this.displayModal = false;
     this.editModal = false;
     this.businessIdea = {
-      _id: '',
-      userId: '',
       name: '',
       objective: '',
       description: '',
-      webLink: '',
+      webink: '',
       tags: [],
       owners: [],
       typeOfBusiness: '',
-      phoneNumbers: '',
-      views: ''
     };
     this.owner = '';
     this.tags = '';
@@ -40,8 +36,8 @@ export class InvesteeProfileComponent implements OnInit {
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.investeeService.setInvestee(user);
-    console.log(this.investeeService.getInvestee());
     this.currentUser = user;
+    this.investeeService.getIdeaData().subscribe((data) => console.log(data));
   }
 
   showModal(): void {
@@ -79,10 +75,20 @@ export class InvesteeProfileComponent implements OnInit {
   }
 
   createBusinessIdea(): void {
-    console.log(this.businessIdea);
     const tags = this.tags.split(' ');
     this.businessIdea.owners.push(this.owner);
     this.businessIdea.tags = tags;
-    console.log(this.businessIdea);
+    this.investeeService.createIdea().subscribe(
+      (ideaCreated) => {
+        this.investeeService.updateIdea(this.businessIdea).subscribe(
+          (updatedIdea) => {
+            console.log('Idea has been created');
+            this.hasIdea = !this.hasIdea;
+            this.businessIdea = updatedIdea.result;
+            this.investeeService.setIdea(this.businessIdea);
+          }
+        );
+      }
+    );
   }
 }

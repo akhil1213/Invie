@@ -38,22 +38,19 @@
         <div class="idea" *ngIf="hasIdea">
           <div class="idea-card">
             <div class="idea-header">
-              <h2>Name Of Business</h2>
-              <label>Type of Business</label><br/>
-              <label>Owner</label><br/>
-              <label><a href="javascript:void(0)">weblink</a></label>
+              <h2>{{businessIdea.name}}</h2>
+              <label>{{businessIdea.typeOfBusiness}}</label><br/>
+              <label>{{businessIdea.owner[0]}}</label><br/>
+              <label><a href="javascript:void(0)">{{businessIdea.weblink}}</a></label>
             </div>
             <div class="idea-body">
               <div class="idea-description">
                 <p>
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                  {{businessIdea.description}}
                 </p>
               </div>
               <div class="idea-tags">
-                <label>Tags:</label>
+                <label>Tags: IMPLEMENT TAGS LATER</label>
               </div>
             </div>
           </div>
@@ -89,13 +86,13 @@
         <!--Weblink-->
         <div class="input-group">
           <label>Website</label>
-          <input [(ngModel)]="businessIdea.webLink" id="inputClass" type="text" name="pname">
+          <input [(ngModel)]="businessIdea.weblink" id="inputClass" type="text" name="pname">
         </div>
-        <!--Phone Number-->
+        <!--Phone Number
         <div class="input-group">
           <label>Phone Number</label>
           <input [(ngModel)]="businessIdea.phoneNumbers" id="inputClass" type="text" name="pname">
-        </div>
+        </div>-->
         <!--Tags-->
         <div class="input-group">
           <label>Tags (Seperate each tag by space)</label>
