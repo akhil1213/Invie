@@ -86,6 +86,7 @@ export class InvesteeProfileComponent implements OnInit {
             this.hasIdea = !this.hasIdea;
             this.businessIdea = updatedIdea.result;
             this.investeeService.setIdea(this.businessIdea);
+            this.showModal();
           }
         );
       }
