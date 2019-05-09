@@ -1,0 +1,32 @@
+db.businessideas.update(
+  {_id: "5cd47751acafc32cdcea40eb"},
+  {
+    name: "NAME",
+    objective: "OBJECTIVE",
+    description: "DESCRIPTION",
+    weblink: "WEBLINK",
+    tags: ["ITEM_1", "ITEM_2"],
+    owners: ["OWNER_1", "OWNER_2"],
+    typeOfBusiness: "TYPE_OF_BUSINESS",
+    phoneNumber: "PHONE_NUMBER"
+  }
+)
+
+db.investees.update(
+  {email: "EMAIL"},
+  {
+    phoneNumber: "PHONE_NUMBER",
+    description: "DESCRIPTION"
+  }
+)
+
+db.investors.update(
+  {email: "EMAIL"},
+  {
+    phoneNumber: "PHONE_NUMBER",
+    description: "DESCRIPTION",
+    weblink: "WEBLINK",
+    currentCompany: "CURRENT_COMPANY",
+    interest: ["ITEM_1", "ITEM_2"]
+  }
+)
