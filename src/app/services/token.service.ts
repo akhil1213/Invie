@@ -8,7 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Token {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.token = localStorage.getItem('token');
+    if (!this.token) {
+      this.setToken('blank');
+    }
+  }
   private token = 'blank';
 
   setToken(token) {

@@ -40,6 +40,7 @@ export class InvesteeProfileComponent implements OnInit {
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.investeeService.setInvestee(user);
+    console.log(this.investeeService.getInvestee());
     this.currentUser = user;
   }
 
@@ -60,7 +61,18 @@ export class InvesteeProfileComponent implements OnInit {
     this.investeeService.updateInvestee(requiredInformation).subscribe(
       (res) => {
         console.log(res);
+        const user = this.investeeService.getInvestee();
+        user.name = res.result.name;
+        user.description = res.result.description;
+        user.phoneNumber = res.result.phoneNumber;
+        this.investeeService.setInvestee(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        this.showEditModal();
+
       }, (err) => {
+        const user = this.investeeService.getInvestee();
+        this.currentUser = user;
+        this.showEditModal();
         console.log(err);
       }
     );

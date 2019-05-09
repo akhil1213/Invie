@@ -29,6 +29,9 @@ export class InvesteeService {
     return this.http.patch<any>('//localhost:3000/user/investee/updateDesc', investee);
   }
 
+  displayFeed():  Observable<any> {
+    return this.http.get<any>('//localhost:3000/user/investee/generateFeed');
+  }
   setInvestee(investee): void {
     this.user = investee;
   }

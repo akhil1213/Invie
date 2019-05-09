@@ -63,22 +63,20 @@
 
     <!--Display Investee List if the user that logged in is an investor-->
     <div class="investee-list" *ngIf="typeOfUser == 2">
-      <div class="feed-card">
+      <div class="feed-card" *ngFor="let f of feedData; let i = index">
         <div class="card-container">
           <div class = "investee-header">
-              <img src="../../assets/user-male.png">
-            <h4><b>John Doe</b></h4>
+              <img *ngIf="i%2===0; else img2"   src="../../assets/user-male.png">
+              <ng-template #img2><img src="../../assets/user-female.png"></ng-template>
+            <h4><b>{{f.name}}</b></h4>
           </div>
           <div class = "businessTitle">
-              <h4>Architect & Engineer</h4>
+              <h4>Works at {{f.currentCompany}}</h4>
           </div>
           <div class="investee-body">
             <div class="investee-description">
               <p>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {{f.description}}
               </p>
             </div>
               <div class="tags">

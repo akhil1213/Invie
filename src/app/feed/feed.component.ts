@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InvestorService } from '../services/investor.service';
+import { InvesteeService } from '../services/investee.service';
 
 @Component({
   selector: 'app-feed',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class FeedComponent implements OnInit {
 
   typeOfUser: number;
-  constructor() { }
+  feedData;
+  constructor(private investorService: InvestorService,
+    private investeeService: InvesteeService) { }
 
   ngOnInit() {
     this.typeOfUser = parseInt(localStorage.getItem('typeOfUser'));
@@ -17,6 +21,12 @@ export class FeedComponent implements OnInit {
 
     } else {
       // Ivestee Data
+      this.investeeService.displayFeed().subscribe(
+        (data) => {
+          console.log(data);
+          this.feedData = data;
+        }
+      );
     }
   }
 
