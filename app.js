@@ -45,10 +45,10 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  const statusCode = err.status;
   // render the error page
   // res.sendStatus(err.status)
-  res.status(err.status || 500);
+  res.status(statusCode >= 100 && statusCode < 600 ? err.code : 500);
   res.sendStatus(err.status);
 });
 

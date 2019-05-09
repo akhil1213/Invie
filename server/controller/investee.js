@@ -114,7 +114,8 @@ exports.updateInvestee = (req,res,next) => {
         message: error
       });
     });
-  }
+}
+
 exports.generateFeed = (req,res,next) => {
   Investor.find({}).limit(5)
     .then(result =>{

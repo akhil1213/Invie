@@ -55,7 +55,7 @@ exports.getBusinessIdea = (req, res, next) => {
 
 
 exports.updateBusinessIdea = (req, res, next) => {
-  Investee.findOneAndUpdate (
+  BusinessIdea.findOneAndUpdate (
       {userId : req.data.investeeId},
         {
           name: req.body.name,
@@ -64,9 +64,14 @@ exports.updateBusinessIdea = (req, res, next) => {
           weblink: req.body.weblink,
           tags: req.body.tags,
           owners: req.body.owners,
-          typeOfBusiness: req.typeOfBusiness
+          typeOfBusiness: req.body.typeOfBusiness
         })
       .then(documents => {
+        if(!documents) {
+          res.status(401).json({
+            message: error
+          });
+        }
           res.status(200).json({
               message: "Updated BusinessIdea",
               result: ideaInfo(documents)
