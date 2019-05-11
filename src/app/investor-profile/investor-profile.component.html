@@ -2,29 +2,19 @@
   <app-profile-navbar></app-profile-navbar>
 </div>
 <div class="container">
-  <div id = "tagsPushedRight">
-      <div class ="contact">
-        <!-- It could be an image of an investor but that would be hard -->
-        <div class = "info">
-          <div>
-              <img src="../../assets/user-male.png"class = "image" >
-          </div>
-          <div class = "name">
-            <h2>Brian Trash</h2>
-          </div>
-          <div class = "phoneNumber">
-              <a href="tel:+917-666-8484">917-666-8484</a>
-          </div>
-          <div class = "email">
-              <a href = "mailto:abc.example.com">abc.example.com</a>
-          </div>
-
-            <div class = "name investorWebsite">
-                <a href = "google.com">Investors website</a>
-            </div>
-        </div>
+  <div class="profile">
+    <div class="profile-card">
+      <div class="user-img">
+          <img src="../../assets/user-male.png" />
       </div>
+      <div class="profile-container">
+        <label>Brian Aguilar</label>
+        <label>123-456-2456</label>
+        <a (click)="showEditModal()" href="javascript:void(0)">Edit Profile</a>
+      </div>
+    </div>
   </div>
+
   <div class = "tags">
     <div class = "investordescription">
           <h3>Description</h3>
@@ -85,5 +75,36 @@
             <td><div><b>Company2</b></div><div id = "small">1,640 followers</div></td>
           </tr>
       </table> -->
+  </div>
+</div>
+<!-- Business Idea Modal-->
+<div class="create-modal" *ngIf="editModal">
+  <div id="mainModalDiv" class="modal animate">
+    <span (click)="showEditModal()" class="close">&times;</span>
+    <div class="modal-content">
+      <div class="header">
+        <h1 style="text-align: center">Edit Profile</h1>
+      </div>
+      <!--Form Contents-->
+      <div class="modal-container">
+        <!--Name-->
+        <div class="input-group">
+          <label>Name</label>
+          <input [(ngModel)]="currentUser.name" value="currentUser.name" id="inputClass" type="text" name="pname">
+        </div>
+        <!--Phone Number-->
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input [value]="currentUser.phoneNumber" [(ngModel)]="currentUser.phoneNumber" id="inputClass" type="text" name="pname">
+        </div>
+        <!--Description-->
+        <div class="input-group">
+          <label>Description</label>
+          <textarea [value]="currentUser.description" [(ngModel)]="currentUser.description"></textarea>
+        </div>
+        <!--Submit-->
+        <button (click)="updateProfile()">Update Profile</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvestorProfileComponent implements OnInit {
 
+  editModal: boolean;
+
   constructor() { }
 
   ngOnInit() {
+    this.editModal = false;
   }
+
+  showEditModal(): void {
+    this.editModal = !this.editModal;
+  }
+
 
 }
