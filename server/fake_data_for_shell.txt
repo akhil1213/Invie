@@ -1,32 +1,38 @@
-db.businessideas.update(
-  {_id: "5cd47751acafc32cdcea40eb"},
+db.businessideas.updateOne(
+  {"_id": ObjectId("5cd712d04019c30c74005c12")},
   {
-    name: "NAME",
-    objective: "OBJECTIVE",
-    description: "DESCRIPTION",
-    weblink: "WEBLINK",
-    tags: ["ITEM_1", "ITEM_2"],
-    owners: ["OWNER_1", "OWNER_2"],
-    typeOfBusiness: "TYPE_OF_BUSINESS",
-    phoneNumber: "PHONE_NUMBER"
+    $set: {
+      "name": "NAME",
+      "objective": "OBJECTIVE",
+      "description": "DESCRIPTION",
+      "weblink": "WEBLINK",
+      "tags": ["ITEM_1", "ITEM_2"],
+      "owners": ["OWNER_1", "OWNER_2"],
+      "typeOfBusiness": "TYPE_OF_BUSINESS",
+      "phoneNumber": "PHONE_NUMBER"
+    }
   }
 )
 
-db.investees.update(
-  {email: "EMAIL"},
+db.investees.updateOne(
+  {"email": "EMAIL"},
   {
-    phoneNumber: "PHONE_NUMBER",
-    description: "DESCRIPTION"
+    $set: {
+      "phoneNumber": "PHONE_NUMBER",
+      "description": "DESCRIPTION"
+    }
   }
 )
 
-db.investors.update(
-  {email: "EMAIL"},
+db.investors.updateOne(
+  {"email": "josh@gmail.com"},
   {
-    phoneNumber: "PHONE_NUMBER",
-    description: "DESCRIPTION",
-    weblink: "WEBLINK",
-    currentCompany: "CURRENT_COMPANY",
-    interest: ["ITEM_1", "ITEM_2"]
+    $set: {
+      "phoneNumber": "PHONE_NUMBER",
+      "description": "DESCRIPTION",
+      "weblink": "WEBLINK",
+      "currentCompany": "CURRENT_COMPANY",
+      "interest": ["ITEM_1", "ITEM_2"]
+    }
   }
 )
