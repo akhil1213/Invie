@@ -20,7 +20,7 @@ export class InvestorService {
   login(user): Observable<any> {
     return this.http.post<any>('//localhost:3000/user/investor/login', user);
   }
-
+  
   updateInvestor(investor): Observable<any> {
     return this.http.patch<any>('//localhost:3000/user/investor/updateDesc', investor);
   }

@@ -4,7 +4,7 @@
 <div class = "container">
     <div class = "header">
       <div class = "para">
-        <h2>Name of user, you're the boss of your account</h2>
+        <h2>{{currentUser.name}}, you're the boss of your account</h2>
       </div>
     <div class = "info">
       <div class = "imagediv">
@@ -12,10 +12,10 @@
       </div>
       <div class = "descriptiondiv">
           <div class = "name">
-            <p>Investor name</p>
+            <p>{{currentUser.name}}</p>
           </div>
           <div class = "description">
-              <p>Investor - mini description</p>
+              <p>{{userType}} - {{currentUser.description}}</p>
           </div>
           <div class = "membersince">
               <p>Member since Jan 25,2017</p>
@@ -39,7 +39,7 @@
       <div class = "change-card" (click) = "emailClicked = true; phoneClicked = false; passwordClicked = false">
           <h4>Change your email address</h4>
           <div class = "change" *ngIf = "emailClicked">
-            <h5> Your current email address: lebron@gmail.com </h5>
+            <h5> Your current email address: {{currentUser.email}} </h5>
               <form>
                 <div class = "form">
                   <label for = "username">Email:</label>
@@ -52,7 +52,7 @@
       <div class = "change-card" (click) = "emailClicked = false; phoneClicked = true; passwordClicked = false" >
           <h4>Change your phone number</h4>
           <div class = "change" *ngIf = "phoneClicked">
-              <h5> Your current Phone Number is: 911 </h5>
+              <h5> Your current Phone Number is: {{currentUser.phoneNumber}} </h5>
                 <form>
                   <div class = "form">
                     <label for = "username">New Phone Number:</label>
@@ -83,7 +83,7 @@
       <div class = "change-card">
           <h4>Who can see your email-address/phone-number</h4>
           <div class = "change">
-              <h5>Who can see lebron@gmail.com? or 911</h5>
+              <h5>Who can see {{currentUser.phoneNumber}} or {{currentUser.email}}</h5>
               <!-- This changes depending on if an investor is on the settings page or investee is on investee page. -->
                 <form>
                     <select name = "displayEmailTo">

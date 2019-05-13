@@ -6,6 +6,9 @@ import { Component, Renderer2, OnInit, ViewChild, ElementRef} from '@angular/cor
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  currentUser;
+  userTypeNum;
+  userType;
   newEmail:string;
   phoneNumber:string;
   passwordInfo = {
@@ -19,7 +22,17 @@ export class SettingsComponent implements OnInit {
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.userTypeNum = localStorage.getItem('typeOfUser');
+    if(this.userTypeNum == '1')
+    {
+      this.userType = 'Investor';
+    }else{
+      this.userType = 'Investee';
+    }
+    this.currentUser = user;
   }
+  //for css design to show the user if account option or privacy option is clicked.
   optionEntered(choice:string){
     console.log(choice);
     let acc = this.containerEltRef.nativeElement.querySelector('#accountButton');
