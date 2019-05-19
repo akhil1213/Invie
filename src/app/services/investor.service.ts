@@ -14,23 +14,23 @@ export class InvestorService {
   }
 
   signup(user): Observable<any> {
-    return this.http.post<any>('//localhost:3000/user/investor/signup', user);
+    return this.http.post<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investor/signup', user);
   }
 
   login(user): Observable<any> {
-    return this.http.post<any>('//localhost:3000/user/investor/login', user);
+    return this.http.post<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investor/login', user);
   }
 
   updateInvestor(investor): Observable<any> {
-    return this.http.patch<any>('//localhost:3000/user/investor/updateDesc', investor);
+    return this.http.patch<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investor/updateDesc', investor);
   }
 
   getInvestorData(): Observable<any> {
-    return this.http.get<any>('//localhost:3000/user/investor/getInvestor');
+    return this.http.get<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investor/getInvestor');
   }
 
   displayFeed(): Observable<any> {
-    return this.http.get<any>('//localhost:3000/user/investor/generateFeed');
+    return this.http.get<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investor/generateFeed');
   }
 
   setInvestor(investor): void {

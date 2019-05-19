@@ -15,42 +15,42 @@ export class InvesteeService {
   }
 
   signup(user): Observable<any> {
-    return this.http.post<any>('//localhost:3000/user/investee/signup', user);
+    return this.http.post<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/signup', user);
   }
 
   login(user): Observable<any> {
-    return this.http.post<any>('//localhost:3000/user/investee/login', user);
+    return this.http.post<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/login', user);
   }
 
   getInvesteeData(): Observable<any> {
-    return this.http.get<any>('//localhost:3000/user/investee/getInvestee');
+    return this.http.get<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/getInvestee');
   }
 
   updateInvestee(investee): Observable<any> {
-    return this.http.patch<any>('//localhost:3000/user/investee/updateDesc', investee);
+    return this.http.patch<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/updateDesc', investee);
   }
 
   createIdea(): Observable<any> {
-    return this.http.post<any>('//localhost:3000/user/investee/createIdea', {});
+    return this.http.post<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/createIdea', {});
   }
 
   updateIdea(business): Observable<any> {
-    return this.http.patch<any>('//localhost:3000/user/investee/updateIdea', business);
+    return this.http.patch<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/updateIdea', business);
   }
 
   getIdeaData(): Observable<any> {
-    return this.http.get<any>('//localhost:3000/user/investee/getIdea');
+    return this.http.get<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/getIdea');
   }
 
   displayFeed():  Observable<any> {
-    return this.http.get<any>('//localhost:3000/user/investee/generateFeed');
+    return this.http.get<any>('/http://invie.us-east-2.elasticbeanstalk.com/user/investee/generateFeed');
   }
 
   comment(message: string): Observable<any> {
     const req = {
       message: message
     };
-    return this.http.patch<any>('//localhost:3000/user/investee/pushComment', req);
+    return this.http.patch<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/pushComment', req);
   }
 
   setInvestee(investee): void {

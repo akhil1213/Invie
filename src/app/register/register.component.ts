@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     password: '',
     userType: ''
   };
-
+  currentState: boolean;
   // Necessary information for signup
   signUpInformation = {
     name: '',
@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#3CCDEA';//Setting background color of register page body.
  }*/
   ngOnInit() {
+    this.currentState = false;
   }
 
 

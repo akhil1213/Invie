@@ -28,17 +28,17 @@
     </div>
   </div>
   <div class = "options" #options>
-        <div class ="option"><button id ="accountButton"  (click) = "optionEntered('account')"(click) = "privacyClicked = false" class = " newClass button">Account</button></div>
-        <div class ="option"><button id = "privacyButton" (click) = "optionEntered('privacy')"class = "button" (click) = "privacyClicked = true">Privacy</button></div>
+        <div class ="option"><button id ="accountButton"  (click) = "optionEntered('account')" class = " newClass button">Account</button></div>
+        <div class ="option"><button id = "privacyButton" (click) = "optionEntered('privacy')"class = "button" >Privacy</button></div>
   </div>
-  <div *ngIf = "!privacyClicked" class ="optiondiv">
+  <div class ="optiondiv">
     <div class ="allcards">
       <div class = "header-card">
           <h3>Login and Security</h3>
       </div>
-      <div class = "change-card" (click) = "emailClicked = true; phoneClicked = false; passwordClicked = false">
+      <div class = "change-card" >
           <h4>Change your email address</h4>
-          <div class = "change" *ngIf = "emailClicked">
+          <div class = "change" >
             <h5> Your current email address: {{currentUser.email}} </h5>
               <form>
                 <div class = "form">
@@ -49,9 +49,9 @@
                 </form>
           </div>
       </div>
-      <div class = "change-card" (click) = "emailClicked = false; phoneClicked = true; passwordClicked = false" >
+      <div class = "change-card" >
           <h4>Change your phone number</h4>
-          <div class = "change" *ngIf = "phoneClicked">
+          <div class = "change">
               <h5> Your current Phone Number is: {{currentUser.phoneNumber}} </h5>
                 <form>
                   <div class = "form">
@@ -62,9 +62,9 @@
                   </form>
             </div>
       </div>
-      <div class = "change-card" (click) = "emailClicked = false; phoneClicked = false; passwordClicked = true">
+      <div class = "change-card" >
           <h4>Change password</h4>
-          <div class = "change" *ngIf = "passwordClicked">
+          <div class = "change" >
               <h5>Enter your new password: </h5>
                 <form>
                   <div class = "form">
@@ -79,7 +79,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf = "privacyClicked">
+  <div >
       <div class = "change-card">
           <h4>Who can see your email-address/phone-number</h4>
           <div class = "change">
