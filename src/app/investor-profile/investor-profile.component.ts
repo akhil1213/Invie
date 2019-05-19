@@ -24,8 +24,8 @@ export class InvestorProfileComponent implements OnInit {
   showEditModal(): void {
     this.editModal = !this.editModal;
   }
-  updateProfile(){
-    //Frontend needs to pass in: name, phoneNumber, description. weblink, currentCompany, interest.
+  updateProfile() {
+    // Frontend needs to pass in: name, phoneNumber, description. weblink, currentCompany, interest.
     const requiredInformation = {
       name: this.currentUser.name,
       phoneNumber: this.currentUser.phoneNumber,
@@ -41,8 +41,10 @@ export class InvestorProfileComponent implements OnInit {
         user.name = res.result.name;
         user.description = res.result.description;
         user.phoneNumber = res.result.phoneNumber;
+        user.interests = res.result.interests;
         this.investorService.setInvestor(user);
         localStorage.setItem('user', JSON.stringify(user));
+        this.currentUser = user;
         this.showEditModal();
 
       }, (err) => {

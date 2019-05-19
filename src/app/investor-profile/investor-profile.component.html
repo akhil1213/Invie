@@ -33,49 +33,8 @@
                     <div>{{interest}}</div><div id = "small">1,000 followers</div>
                   </div>
             </div>
-              <!-- <div class = "view-item">
-                  <img src="../../assets/user-male.png">
-                  <div id ="followersunder">
-                    <div>Interest 2</div><div id = "small">2,000 followers</div>
-                  </div>
-              </div> --
-        </div>
+
       </div>
-      <div class = "currentcompanyinfo">
-            <div>
-              <div class = "header-title"><h3> Current Company</h3></div>
-            </div>
-            <div>
-                <p>About the company....</p>
-            </div>
-      </div>
-        <!-- <div class = "companyinfo">
-            <div class = "viewheader-card">
-                <div class = "header-title"><h3> Current Company</h3></div>
-            </div>
-            <div class = "view-item">
-              <div>Looking for companies that work with machine learning.Lorem Ipsum iustr</div>
-            </div>
-          </div> -->
-      </div>
-      <!-- <table>
-        <tr>
-          <img src = "../../assets/investorimage.png">
-          <td><div>Company1</div><div id = "small">1,000 followers</div></td>
-          <img src = "../../assets/investorimage.png">
-          <td><div>Company1</div><div id = "small">1,000 followers</div></td>
-          <img src = "../../assets/investorimage.png">
-          <td><div>Company1</div><div id = "small">1,000 followers</div></td>
-        </tr>
-        <tr>
-            <img src = "../../assets/investorimage.png">
-            <td><div><b><a href = "">Company2</a></b></div><div id = "small">1,640 followers</div></td>
-            <img src = "../../assets/investorimage.png">
-            <td><div><b>Company2</b></div><div id = "small">1,640 followers</div></td>
-            <img src = "../../assets/investorimage.png">
-            <td><div><b>Company2</b></div><div id = "small">1,640 followers</div></td>
-          </tr>
-      </table> -->
   </div>
   </div>
 </div>
@@ -104,6 +63,10 @@
           <label>Description</label>
           <textarea [value]="currentUser.description" [(ngModel)]="currentUser.description"></textarea>
         </div>
+        <!--<div class="input-group">
+          <label>Interests (Seperate by space)</label>
+          <input [value]="currentUser.phoneNumber" [(ngModel)]="currentUser.phoneNumber" id="inputClass" type="text" name="pname">
+        </div>-->
         <!--Submit-->
         <button (click)="updateProfile()">Update Profile</button>
       </div>

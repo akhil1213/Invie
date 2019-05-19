@@ -11,6 +11,7 @@ export class FeedComponent implements OnInit {
 
   typeOfUser: number;
   feedData;
+  idea;
   displayIdea: boolean;
 
   constructor(private investorService: InvestorService,
@@ -23,6 +24,7 @@ export class FeedComponent implements OnInit {
       this.investorService.displayFeed().subscribe(
         (data) => {
           console.log(data);
+          this.feedData = data;
         }
       );
     } else {
@@ -36,9 +38,12 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  displayCommentView(): void {
+  displayCommentView(i: number): void {
     this.displayIdea = !this.displayIdea;
-    console.log(this.displayIdea);
+    if (i === -1) {
+      return;
+    }
+    this.idea = this.feedData[i];
   }
 
 }

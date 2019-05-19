@@ -74,6 +74,7 @@ textarea{
   padding: 16px;
   width:100%;
   display: inline-block;
+  display: flex;
 }
 .input-group{
   display:flex;
@@ -161,3 +162,6 @@ textarea{
   text-align:left;
 }
 
+.comment-section{
+  width:50%;
+}
