@@ -1,126 +1,32 @@
-.container{
-  position: absolute;
-  margin-top:75px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: -17px;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.navbar{
+/*
+------------------------
+MODAL CSS
+------------------------
+*/
+.create-modal{
+  position:fixed;
+  background-color:rgba(175, 175, 175, 0.932);
   width:100%;
-  height:65px;
-  position:sticky;
+  height:100%;
+  overflow-y:scroll;
   top:0px;
   left:0px;
-  z-index:11;
-
+  z-index:2;
+}
+a{
+  color:#FF4500;
 }
 
-
-/**
-View Container Styles
-**/
-.recently-viewed-card {
-  border: 1px solid rgb(218, 218, 218);
-  width: 325px;
+a:hover{
+  color:black;
 }
-.view-card-container,.view-body, .investor-list, .investee-list {
-  display:flex;
-  flex-direction: column;
-}
-.view-header{
-  text-align: center;
-  border-bottom: 1px solid rgb(218, 218, 218);
-}
-.user-view{
-  height:70px;
-  display:flex;
-  padding:10px;
-  flex-direction: row;
-  border-bottom: 1px solid rgb(218, 218, 218);
-}
-.user-view img{
- width:60px;
- height:60px;
-}
-.user-view h3{
- margin-left:15px;
- font-weight: none;
+#signUpSpan{
+  margin-top: 15px;
+  display: flex; /* or inline-flex */
+  align-items: center;
+  justify-content: center;
 }
 
-/**
-Feed Card Style
-**/
-.feed-card {
-  border: 1px solid rgb(218, 218, 218);
-  transition: 0.3s;
-  margin-bottom:15px;
-  width: 925px;
-}
-.investor-header{
-  margin-top:10px;
-}
-.investor-header h4{
-  position: relative;
-  left:10px;
-  top:20px;
-}
-.investor-body{
-  display:flex;
-  flex-direction: row;
-}
-.investor-description{
-  width:70%;
-}
-.investee-header{
-  margin-top:10px;
-}
-.investee-header h4{
-  position: relative;
-  left:10px;
-  top:20px;
-}
-.investee-description{
-  position: relative;
-  top: -30px;
-  width:  70%;
-}
-.investee-body{
-  display:flex;
-  flex-direction: column;
-}
-
-.feed-card img{
-  float:left;
-  width:100px;
-}
-.last-card{
-  border: 1px solid rgb(218, 218, 218);
-  transition: 0.3s;
-  width: 325px;
-}
-.card-container {
-  padding: 2px 16px;
-  display:flex;
-  flex-direction: column;
-}
-
-.tag-link{
-  color:#EF6C2A;
-  text-decoration: underline;
-  margin-right:7px;
-  cursor: pointer;
-}
-
-/**
---------------------------
-MODAL CSS
---------------------------
-**/
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 50%;
@@ -182,7 +88,7 @@ textarea{
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 40%; /* Full width */
+  width: 70%; /* Full width */
   height: 80%; /* Full height */
   min-width: 600px;
   /*overflow: auto; /* Enable scroll if needed */
@@ -244,6 +150,14 @@ textarea{
   }
 }
 
-.comment-link {
-  text-align: center;
+#desc{
+  width:100%;
+  outline: none;
+  resize: none;
+  height:50px;
 }
+
+.form-group{
+  text-align:left;
+}
+

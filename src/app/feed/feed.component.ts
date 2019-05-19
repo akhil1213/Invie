@@ -11,11 +11,13 @@ export class FeedComponent implements OnInit {
 
   typeOfUser: number;
   feedData;
+  displayIdea: boolean;
+
   constructor(private investorService: InvestorService,
     private investeeService: InvesteeService) { }
 
   ngOnInit() {
-    this.typeOfUser = parseInt(localStorage.getItem('typeOfUser'));
+    this.typeOfUser = parseInt(localStorage.getItem('typeOfUser'), 10);
     // Investor Data
     if (this.typeOfUser === 1) {
 
@@ -28,6 +30,11 @@ export class FeedComponent implements OnInit {
         }
       );
     }
+  }
+
+  displayCommentView(): void {
+    this.displayIdea = !this.displayIdea;
+    console.log(this.displayIdea);
   }
 
 }

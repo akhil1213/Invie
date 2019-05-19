@@ -15,6 +15,7 @@ import { ProfileNavbarComponent } from './profile-navbar/profile-navbar.componen
 import { AuthInterceptor } from './Authentication/auth-interceptor';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.component';
+import { CommentsPageComponent } from './comments-page/comments-page.component';
 // import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.compo
     FooterComponent,
     ProfileNavbarComponent,
     SettingsComponent,
-    SettingsNavbarComponent
+    SettingsNavbarComponent,
+    CommentsPageComponent
   ],
   imports: [
     BrowserModule,
