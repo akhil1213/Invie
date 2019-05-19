@@ -76,8 +76,6 @@ Feed Card Style
 .investor-description{
   width:70%;
 }
-
-
 .investee-header{
   margin-top:10px;
 }
@@ -93,7 +91,7 @@ Feed Card Style
 }
 .investee-body{
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .feed-card img{
@@ -109,4 +107,11 @@ Feed Card Style
   padding: 2px 16px;
   display:flex;
   flex-direction: column;
+}
+
+.tag-link{
+  color:#EF6C2A;
+  text-decoration: underline;
+  margin-right:7px;
+  cursor: pointer;
 }
