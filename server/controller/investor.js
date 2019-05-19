@@ -1,4 +1,5 @@
 const Investor = require("../models/Investor");
+const Investee = require("../models/Investee");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -121,3 +122,24 @@ exports.updateInvestor = (req,res,next) => {
       });
     });
   }
+
+
+  exports.generateFeed = (req,res,next) => {
+    Investee.find({}).limit(5)
+      .then(result =>{
+        if(!result){
+          return res.status(404).json({
+            message:"Users cannot be retrieved."
+          });
+        }
+        else{
+          res.status(201).json(result);
+        }
+    })
+    .catch(error =>{
+      res.status(401).json({
+        message: error
+      });
+    });
+  }
+
