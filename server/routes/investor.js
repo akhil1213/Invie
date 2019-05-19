@@ -1,5 +1,6 @@
 const express = require("express");
 const InvestorController = require("../controller/investor");
+const BusinessIdeaController = require("../controller/businessIdea");
 const midAuth = require("../tokenAuth/authInvestor");
 
 const router = express.Router();
@@ -18,9 +19,9 @@ router.patch("/updateDesc", midAuth, InvestorController.updateInvestor);
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.get("/getInvestor", midAuth, InvestorController.getInvestor);
 
-//Use this route to generate the feed of investees.
+//Use this route to generate the feed of business idea.
 //You don't need to pass information.
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
-router.get("/generateFeed", midAuth, InvestorController.generateFeed);
+router.get("/generateFeed", midAuth, BusinessIdeaController.generateFeed);
 
 module.exports = router;

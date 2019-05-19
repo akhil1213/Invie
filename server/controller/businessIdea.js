@@ -56,30 +56,50 @@ exports.getBusinessIdea = (req, res, next) => {
 
 exports.updateBusinessIdea = (req, res, next) => {
   BusinessIdea.findOneAndUpdate (
-      {userId : req.data.investeeId},
-        {
-          name: req.body.name,
-          objective: req.body.objective,
-          description: req.body.description,
-          weblink: req.body.weblink,
-          tags: req.body.tags,
-          owners: req.body.owners,
-          typeOfBusiness: req.body.typeOfBusiness
-        })
-      .then(documents => {
-        if(!documents) {
-          res.status(401).json({
-            message: error
-          });
-        }
-          res.status(200).json({
-              message: "Updated BusinessIdea",
-              result: ideaInfo(documents)
-          });
-      })
-      .catch(error => {
-          res.status(401).json({
-            message: error
-          });
+    {userId : req.data.investeeId},
+    {
+      name: req.body.name,
+      objective: req.body.objective,
+      description: req.body.description,
+      weblink: req.body.weblink,
+      tags: req.body.tags,
+      owners: req.body.owners,
+      typeOfBusiness: req.body.typeOfBusiness
+  })
+  .then(documents => {
+    if(!documents) {
+      return res.status(401).json({
+        message: error
+      });
+    }
+    res.status(200).json({
+      message: "Updated BusinessIdea",
+      result: ideaInfo(documents)
+    });
+  })
+  .catch(error => {
+    res.status(401).json({
+      message: error
+    });
+  });
+}
+
+
+exports.generateFeed = (req,res,next) => {
+  BusinessIdea.find({}).limit(5)
+    .then(result =>{
+      if(!result){
+        return res.status(404).json({
+          message:"Users cannot be retrieved."
         });
       }
+      else{
+        res.status(201).json(result);
+      }
+  })
+  .catch(error =>{
+    res.status(401).json({
+      message: error
+    });
+  });
+}

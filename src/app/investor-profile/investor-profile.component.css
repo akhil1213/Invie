@@ -3,8 +3,8 @@
   margin-top:65px;
   top: 0;
   bottom: 0;
-  left: 0;
-  right: -17px;
+  left: -50px;
+  right: 0px;
   overflow-y: scroll;
   display:flex;
 }
@@ -298,4 +298,11 @@ textarea{
 .profile-body{
   display:flex;
   flex-direction: column;
+}
+
+.center{
+  margin: auto;
+  display: flex;
+	width: 75%;
+	min-width: 650px;
 }

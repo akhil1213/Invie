@@ -47,6 +47,10 @@ var businessideaSchema = new mongoose.Schema({
         default: ''
     },
 
+    messages: [{
+      type:String,
+    }],
+
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Investee",
