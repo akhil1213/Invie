@@ -17,9 +17,10 @@
           </div>
           <div class="comment-section">
             <label>Leave a comment below!</label><br/>
-            <input style="width:400px"type="text">
-            <div class="comment-list">
-
+            <input (keyup.enter)="comment()" [(ngModel)]="currentComment" style="width:300px"type="text">
+            <div style="border:1px solid rgb(218, 218, 218);margin-top:5px; max-width:400px;padding:5px; display:block" class="comment-list" *ngFor="let c of comments">
+              <label><strong>{{c.name}}</strong></label><br/>
+              <p style="max-width:400px">{{c.comment}}</p>
             </div>
           </div>
         </div>

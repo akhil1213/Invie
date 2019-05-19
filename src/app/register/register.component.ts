@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
 
   login(): void {
-    if (parseInt(this.loginInformation.userType) === 1 ) {
+    if (parseInt(this.loginInformation.userType, 10) === 1 ) {
       this.investorService.login(this.loginInformation).subscribe(
         res => {
           this.setAuthData(res, '1');
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
           console.log(err);
         }
       );
-    } else if (parseInt(this.loginInformation.userType) === 2) {
+    } else if (parseInt(this.loginInformation.userType, 10) === 2) {
       this.investeeService.login(this.loginInformation).subscribe(
         (res) => {
           localStorage.setItem('typeOfUser', '2');
@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signup(): void {
-    if (parseInt(this.signUpInformation.userType) === 1){
+    if (parseInt(this.signUpInformation.userType, 10) === 1) {
       this.investorService.signup(this.signUpInformation).subscribe(
         (res) => {
           const user = res.result;
@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
         }
 
         );
-    } else if (parseInt(this.signUpInformation.userType) === 2){
+    } else if (parseInt(this.signUpInformation.userType, 10) === 2) {
       this.investeeService.signup(this.signUpInformation).subscribe(
         (res) => {
           const user = res.result;

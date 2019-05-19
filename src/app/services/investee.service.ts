@@ -41,8 +41,16 @@ export class InvesteeService {
   getIdeaData(): Observable<any> {
     return this.http.get<any>('//localhost:3000/user/investee/getIdea');
   }
+
   displayFeed():  Observable<any> {
     return this.http.get<any>('//localhost:3000/user/investee/generateFeed');
+  }
+
+  comment(message: string): Observable<any> {
+    const req = {
+      message: message
+    };
+    return this.http.patch<any>('//localhost:3000/user/investee/pushComment', req);
   }
 
   setInvestee(investee): void {

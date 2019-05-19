@@ -63,10 +63,10 @@
           <label>Description</label>
           <textarea [value]="currentUser.description" [(ngModel)]="currentUser.description"></textarea>
         </div>
-        <!--<div class="input-group">
+        <div class="input-group">
           <label>Interests (Seperate by space)</label>
-          <input [value]="currentUser.phoneNumber" [(ngModel)]="currentUser.phoneNumber" id="inputClass" type="text" name="pname">
-        </div>-->
+          <input [value]="interestString" [(ngModel)]="interestString" id="inputClass" type="text" name="pname">
+        </div>
         <!--Submit-->
         <button (click)="updateProfile()">Update Profile</button>
       </div>

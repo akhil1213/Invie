@@ -23,18 +23,18 @@ export class FeedComponent implements OnInit {
     if (this.typeOfUser === 1) {
       this.investorService.displayFeed().subscribe(
         (data) => {
-          console.log(data);
           this.feedData = data;
         }
       );
+      this.investorService.setInvestor(JSON.parse(localStorage.getItem('user')));
     } else {
-      // Ivestee Data
+      // Investee Data
       this.investeeService.displayFeed().subscribe(
         (data) => {
-          console.log(data);
           this.feedData = data;
         }
       );
+      this.investeeService.setInvestee(JSON.parse(localStorage.getItem('user')));
     }
   }
 

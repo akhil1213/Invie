@@ -10,12 +10,14 @@ import { InvestorService } from '../services/investor.service';
 })
 export class InvestorProfileComponent implements OnInit {
   currentUser;
+  interestString: string;
   editModal: boolean;
 
   constructor(private investorService: InvestorService) { }
 
   ngOnInit() {
     this.editModal = false;
+    this.interestString = '';
     const user = JSON.parse(localStorage.getItem('user'));
     this.investorService.setInvestor(user);
     this.currentUser = user;
@@ -25,6 +27,9 @@ export class InvestorProfileComponent implements OnInit {
     this.editModal = !this.editModal;
   }
   updateProfile() {
+    const interests = this.interestString.split(' ');
+    console.log(interests);
+    this.currentUser.interest = interests;
     // Frontend needs to pass in: name, phoneNumber, description. weblink, currentCompany, interest.
     const requiredInformation = {
       name: this.currentUser.name,
@@ -41,15 +46,17 @@ export class InvestorProfileComponent implements OnInit {
         user.name = res.result.name;
         user.description = res.result.description;
         user.phoneNumber = res.result.phoneNumber;
-        user.interests = res.result.interests;
+        user.interests = interests;
         this.investorService.setInvestor(user);
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUser = user;
+        this.interestString = '';
         this.showEditModal();
 
       }, (err) => {
         const user = this.investorService.getInvestor();
         this.currentUser = user;
+        this.interestString = '';
         this.showEditModal();
         console.log(err);
       }

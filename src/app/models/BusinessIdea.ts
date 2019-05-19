@@ -7,6 +7,7 @@ export class BusinessIdea {
     webLink: string;
     tags: string [];
     owners: string[];
+    messages: string[];
     typeOfBusiness: string;
     phoneNumbers: string;
     views: string;
