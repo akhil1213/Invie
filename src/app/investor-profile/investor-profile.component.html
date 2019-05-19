@@ -11,6 +11,7 @@
       <div class="profile-container">
         <label>{{currentUser.name}}</label>
         <label>{{currentUser.phoneNumber}}</label>
+        <label>Current Company: {{currentUser.currentCompany}}</label>
         <a (click)="showEditModal()" href="javascript:void(0)">Edit Profile</a>
       </div>
     </div>
@@ -18,8 +19,8 @@
 
   <div class = "tags">
     <div class = "investordescription">
-          <h3>Description</h3>
-          <p>{{currentUser.description}}</p>
+          <h3 style="color:black">Description</h3>
+          <p style="color:black">{{currentUser.description}}</p>
     </div>
     <div class = "companyandinterests">
       <div class = "interests">
@@ -28,7 +29,7 @@
           </div>
         <div class = "view-body">
               <div *ngFor ="let interest of currentUser.interest" class = "view-item">
-                  <img src="../../assets/user-male.png">
+                  <img src="../../assets/lightbulb.png">
                   <div id ="followersunder">
                     <div>{{interest}}</div><div id = "small">1,000 followers</div>
                   </div>
@@ -57,6 +58,11 @@
         <div class="input-group">
           <label>Phone Number</label>
           <input [value]="currentUser.phoneNumber" [(ngModel)]="currentUser.phoneNumber" id="inputClass" type="text" name="pname">
+        </div>
+        <!--Current Company-->
+        <div class="input-group">
+          <label>Current Company</label>
+          <input [value]="currentUser.currentCompany" [(ngModel)]="currentUser.currentCompany" id="inputClass" type="text" name="pname">
         </div>
         <!--Description-->
         <div class="input-group">

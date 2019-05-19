@@ -21,6 +21,15 @@ export class InvestorProfileComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user'));
     this.investorService.setInvestor(user);
     this.currentUser = user;
+    if (this.currentUser.interest.length !== 0) {
+      for (let i = 0; i < this.currentUser.interest.length; i++) {
+        if (this.interestString.length === 0) {
+          this.interestString = this.currentUser.interest[i];
+          continue;
+        }
+        this.interestString = this.interestString + ' ' +  this.currentUser.interest[i];
+      }
+    }
   }
 
   showEditModal(): void {
@@ -42,11 +51,7 @@ export class InvestorProfileComponent implements OnInit {
     this.investorService.updateInvestor(requiredInformation).subscribe(
       (res) => {
         console.log(res);
-        const user = this.investorService.getInvestor();
-        user.name = res.result.name;
-        user.description = res.result.description;
-        user.phoneNumber = res.result.phoneNumber;
-        user.interests = interests;
+        const user = requiredInformation;
         this.investorService.setInvestor(user);
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUser = user;

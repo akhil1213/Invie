@@ -68,9 +68,9 @@ export class InvesteeProfileComponent implements OnInit {
       (res) => {
         console.log(res);
         const user = this.investeeService.getInvestee();
-        user.name = res.result.name;
-        user.description = res.result.description;
-        user.phoneNumber = res.result.phoneNumber;
+        user.name = requiredInformation.name;
+        user.description = requiredInformation.description;
+        user.phoneNumber = requiredInformation.phoneNumber;
         this.investeeService.setInvestee(user);
         localStorage.setItem('user', JSON.stringify(user));
         this.showEditModal();
@@ -94,7 +94,6 @@ export class InvesteeProfileComponent implements OnInit {
           (updatedIdea) => {
             console.log('Idea has been created');
             this.hasIdea = !this.hasIdea;
-            this.businessIdea = updatedIdea.result;
             this.investeeService.setIdea(this.businessIdea);
             this.showModal();
           }
