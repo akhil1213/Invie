@@ -84,6 +84,9 @@
                 <a href="javascript:void(0)" class="tag-link" *ngFor="let i of f.interest">{{i}}</a>
               </div>
           </div>
+          <div class="comment-link">
+            <a (click)="displayCommentView()" href="javascript:void(0)" class="tag-link">View All Comments</a>
+          </div>
         </div>
       </div>
     </div>
@@ -101,4 +104,9 @@
     </div>
   </div>
 
+</div>
+
+<!-- Business Idea Modal-->
+<div class="create-modal" *ngIf="displayIdea">
+  <app-comments-page (close)="displayCommentView()"></app-comments-page>
 </div>
