@@ -24,8 +24,13 @@ export class InvestorService {
   updateInvestor(investor): Observable<any> {
     return this.http.patch<any>('//localhost:3000/user/investor/updateDesc', investor);
   }
+
   getInvestorData(): Observable<any> {
     return this.http.get<any>('//localhost:3000/user/investor/getInvestor');
+  }
+
+  displayFeed(): Observable<any> {
+    return this.http.get<any>('//localhost:3000/user/investor/generateFeed');
   }
 
   setInvestor(investor): void {

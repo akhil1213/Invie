@@ -56,6 +56,9 @@
               dfkgdf
             </div>
           </div>
+          <div class="comment-link">
+              <a (click)="displayCommentView()" href="javascript:void(0)" class="tag-link">View Business Idea</a>
+            </div>
         </div>
       </div>
     </div>
@@ -84,9 +87,6 @@
                 <a href="javascript:void(0)" class="tag-link" *ngFor="let i of f.interest">{{i}}</a>
               </div>
           </div>
-          <div class="comment-link">
-            <a (click)="displayCommentView()" href="javascript:void(0)" class="tag-link">View All Comments</a>
-          </div>
         </div>
       </div>
     </div>
@@ -98,8 +98,7 @@
     <div class="last-card">
       <div class="card-container">
           <h4><b>Ads</b></h4>
-          <p>Architect & Engineer</p>
-
+          <!--<img src="../../assets/ad-microsoft.png">-->
       </div>
     </div>
   </div>

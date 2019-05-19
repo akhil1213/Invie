@@ -37,7 +37,17 @@ export class InvesteeProfileComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user'));
     this.investeeService.setInvestee(user);
     this.currentUser = user;
-    this.investeeService.getIdeaData().subscribe((data) => console.log(data));
+    this.investeeService.getIdeaData().subscribe(
+      (data) => {
+        console.log(data.result);
+        this.hasIdea = true;
+        this.businessIdea = data.result;
+      },
+      (error) => {
+        console.log('Investee does not have an idea');
+        console.log(error);
+      }
+    );
   }
 
   showModal(): void {

@@ -39,18 +39,19 @@
           <div class="idea-card">
             <div class="idea-header">
               <h2>{{businessIdea.name}}</h2>
-              <label>{{businessIdea.typeOfBusiness}}</label><br/>
-              <label>{{businessIdea.owner[0]}}</label><br/>
-              <label><a href="javascript:void(0)">{{businessIdea.weblink}}</a></label>
+              <label>Type of Business: {{businessIdea.typeOfBusiness}}</label><br/>
+              <label>Owner: {{businessIdea.owners[0]}}</label><br/>
+              <label><a href="javascript:void(0)">Website: {{businessIdea.weblink}}</a></label>
             </div>
             <div class="idea-body">
               <div class="idea-description">
+                <h4>Description</h4>
                 <p>
                   {{businessIdea.description}}
                 </p>
               </div>
               <div class="idea-tags">
-                <label>Tags: IMPLEMENT TAGS LATER</label>
+                <label><strong>Tags: </strong> <a class="tag-link" href="javascript:void(0)" *ngFor="let t of businessIdea.tags">{{t}}</a></label>
               </div>
             </div>
           </div>

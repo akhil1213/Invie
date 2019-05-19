@@ -20,7 +20,11 @@ export class FeedComponent implements OnInit {
     this.typeOfUser = parseInt(localStorage.getItem('typeOfUser'), 10);
     // Investor Data
     if (this.typeOfUser === 1) {
-
+      this.investorService.displayFeed().subscribe(
+        (data) => {
+          console.log(data);
+        }
+      );
     } else {
       // Ivestee Data
       this.investeeService.displayFeed().subscribe(
