@@ -54,6 +54,30 @@ exports.getBusinessIdea = (req, res, next) => {
 }
 
 
+exports.updateBusinessComments = (req, res, next) => {
+  BusinessIdea.update (
+    {userId : req.data.investeeId},
+    {
+      $push: { messages: req.body.message}
+  })
+  .then(documents => {
+    if(!documents) {
+      return res.status(401).json({
+        message: error
+      });
+    }
+    res.status(200).json({
+      message: "Updated BusinessIdea",
+      result: ideaInfo(documents)
+    });
+  })
+  .catch(error => {
+    res.status(401).json({
+      message: error
+    });
+  });
+}
+
 exports.updateBusinessIdea = (req, res, next) => {
   BusinessIdea.findOneAndUpdate (
     {userId : req.data.investeeId},
@@ -83,6 +107,7 @@ exports.updateBusinessIdea = (req, res, next) => {
     });
   });
 }
+
 
 
 exports.generateFeed = (req,res,next) => {

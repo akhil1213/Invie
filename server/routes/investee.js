@@ -31,6 +31,10 @@ router.patch("/updateIdea", midAuth, BusinessIdeaController.updateBusinessIdea);
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
 router.patch("/updateDesc", midAuth, InvesteeController.updateInvestee);
 
+//Pass in a string of comment to add to the array of comments.
+//Add it as ---message---.
+router.patch("/pushComment", midAuth, BusinessIdeaController.updateBusinessComments);
+
 //Use this route to retrieve the investee information.
 //You do not need to pass in any information.
 //ONLY CALL THIS ROUTE IF USER IS LOGGED IN!
