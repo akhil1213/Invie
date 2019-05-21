@@ -43,13 +43,10 @@ export class InvesteeService {
   }
 
   displayFeed():  Observable<any> {
-    return this.http.get<any>('/http://invie.us-east-2.elasticbeanstalk.com/user/investee/generateFeed');
+    return this.http.get<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/generateFeed');
   }
 
-  comment(message: string): Observable<any> {
-    const req = {
-      message: message
-    };
+  comment(req: any): Observable<any> {
     return this.http.patch<any>('http://invie.us-east-2.elasticbeanstalk.com/user/investee/pushComment', req);
   }
 

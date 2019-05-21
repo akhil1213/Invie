@@ -2,6 +2,7 @@ const BusinessIdea = require("../models/BusinessIdea");
 
 const ideaInfo = (obj) => {
   return {
+    _id: obj._id,
     name: obj.name,
     objective: obj.objective,
     description: obj.description,
@@ -56,7 +57,7 @@ exports.getBusinessIdea = (req, res, next) => {
 
 exports.updateBusinessComments = (req, res, next) => {
   BusinessIdea.update (
-    {userId : req.data.investeeId},
+    {_id : req.body._id},
     {
       $push: { messages: req.body.message}
   })

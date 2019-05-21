@@ -32,12 +32,16 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
   }
 
   comment(): void {
-    console.log(this.currentComment);
+    //console.log(this.currentComment);
     const commentInfo = {
       name: this.investorSerivce.getInvestor().name,
       comment: this.currentComment
     };
-    const req = commentInfo.name + ',' + commentInfo.comment;
+    const comment = commentInfo.name + ',' + commentInfo.comment;
+    const req = {
+       message: comment,
+      _id: this.idea._id
+    }
     this.investeeService.comment(req).subscribe(
       (data) => {
         console.log(data);

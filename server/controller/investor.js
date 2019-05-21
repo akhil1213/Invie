@@ -1,5 +1,4 @@
 const Investor = require("../models/Investor");
-const Investee = require("../models/Investee");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -122,5 +121,3 @@ exports.updateInvestor = (req,res,next) => {
     });
   });
 }
-
-
